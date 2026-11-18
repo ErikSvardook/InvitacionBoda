@@ -7,6 +7,9 @@ export type Venue = {
     time: string;
     //null mientras no tengamos el link de Google Maps
     mapsUrl: string | null;
+    //Foto del lugar
+    image?: string;
+    imageAlt?: string;
 };
 
 export const couple = {
@@ -26,11 +29,39 @@ export const event = {
     city: "Cuautitlán Izcalli, Estado de México"
 } as const;
 
+//Partes de la fecha derivadas de dateIso
+//Así el día de la semana, el día, el mes y el año nunca se desincronizan
+export const eventParts = (() => {
+    const fecha = new Date(event.dateIso);
+
+    const formato = (opciones: Intl.DateTimeFormatOptions) => 
+        new Intl.DateTimeFormat("es-MX", {timeZone: "America/Mexico_City", ...opciones}).format(fecha);
+
+    return {
+        weekday: formato({weekday: "long"}),
+        day: formato({day: "2-digit"}),
+        month: formato({month: "2-digit"}),
+        year: formato({year: "numeric"})
+    }
+})();
+
 //Bienvenida: mensaje de los novios al inicio de la página
 export const welcome = {
     kicker: "Bienvenidos",
-    title: "Nos encantaría compartir este día contigo",
+    title: "Un día para celebrar",
     message: "Con mucha alegría queremos invitarte a celebrar con nosotros el comienzo de una nueva etapa. Este día no estaría completo sin las personas que han caminado a nuestro lado, así que guarda la fecha y acompáñanos a brindar por todo lo que viene.",
+} as const;
+
+export const history = {
+    kicker: "Nuestra historia",
+    title: "Dos caminos, un mismo propósito",
+    intro: "Nos conocimos en una tarde de lluvia de 2020, cuando ninguno de los dos esperaba encontrar algo así. Desde entonces, cada momento compartido se ha convertido en nuestro lugar favorito. Hoy queremos invitarte a caminar con nosotros el siguiente tramo de este camino.",
+    full: [
+        "Todo empezó con una conversación que se alargó hasta la madrugada. Entre risas, planes y cafés, nos dimos cuenta de que queríamos seguir contándonos la vida.",
+        "Desde entonces hemos aprendido que el amor también está en las cosas pequeñas: una llamada a media tarde, un plato compartido, una mano que se busca sin pensar.",
+        "Hoy, después de todo ese camino, elegimos celebrar juntos el comienzo de una nueva etapa. Y queremos que tú estés ahí.",
+    ],
+    button: "Conoce nuestra historia",
 } as const;
 
 //Un solo link y una sola dirección para la ceremonia y recepción
@@ -42,6 +73,8 @@ export const ceremony: Venue = {
     address,
     time: "5:00 PM",
     mapsUrl,
+    image: "/imagesPrueba/gale4.jpg",
+    imageAlt: "Foto de prueba del lugar de la ceremonia",
 };
 
 export const reception: Venue = {
@@ -55,16 +88,14 @@ export const reception: Venue = {
 export type ScheduleItem = {
     time: string;
     title: string;
-    description: string;
+    description?: string;
 };
 
 export const schedule: ScheduleItem[] = [
-    { time: "5:00 PM", title: "Ceremonia", description: "Nos damos el sí."},
-    { time: "6:30 PM", title: "Sesión de fotos", description: "Con familiares y amigos."},
-    { time: "8:00 PM", title: "Recepción", description: "Cena y brindis."},
-    { time: "9:00 PM", title: "Baile de los novios", description: "Nuestro primer baile."},
-    { time: "9:30 PM", title: "Pastel", description: "El corte y el postre."},
-    { time: "10:00 PM", title: "Baile general", description: "A celebrar con todos."},
+    { time: "5:00 PM", title: "Ceremonia"},
+    { time: "6:30 PM", title: "Recepción"},
+    { time: "7:00 PM", title: "Cena"},
+    { time: "9:00 PM", title: "Convivencia"},
 ];
 
 export const dressCode = {
@@ -73,15 +104,11 @@ export const dressCode = {
     groom: {
         label: "Ellos",
         title: "Traje azul",
-        image: "/imagesPrueba/vestimentaNovio.jpeg",
-        alt: "Traje azul con el que se vestirá el novio",
-        note: "El azul esta reservado para el novio.",
+        note: "El azul está reservado para el novio.",
     },
     bride: {
         label: "Ellas",
         title: "Vestido blanco",
-        image:  "/imagesPrueba/vestidoNovia.png",
-        alt: "Vestido blanco con el que se vestirá la novia",
         note: "El blanco está reservado para la novia",
     },
 } as const;
@@ -142,10 +169,11 @@ export const galleryPhotos: GalleryPhoto[] = [
     {src: "/imagesPrueba/gale6.jpg", alt: "Sonia y David", caption: "Listos para el siguiente capítulo.", size: "ancho"},
 ];
 
-//Rutas para las fotos destacadas (Hero e Historia)
+//Rutas para las fotos destacadas
 //Al pasar a las fotos definitivas: cambiar imagesPrueba -> images, solo aquí
 export const featuredPhotos = {
     hero: "/imagesPrueba/hero.jpg",
+    welcome: "/imagesPrueba/gale2.jpg",
 }
 
 //Carrusel de historia: cada foto con su descripción
@@ -197,7 +225,7 @@ export const faqItems: FaqItem[] = [
 //Despedida
 export const farewell = {
     kicker: "Gracias",
-    title: "Gracias por ser parte de nuestra historia",
+    title: "Por ser parte de nuestra historia",
     message: "Llegamos al final de esta invitación, pero al comienzo de una nueva etapa. Esperamos contar con tu presencia."
 };
 
@@ -219,3 +247,4 @@ export const site = {
     },
     note: "Diseño y desarrollo web, limpio y a la medida."
 } as const;
+

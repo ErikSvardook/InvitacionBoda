@@ -1,70 +1,59 @@
-import { historyPhotos } from "@/data/wedding-data";
-import HistoriaCarrusel from "@/components/sections/HistoriaCarrusel";
-import Image from "next/image";
+import ArcoFoto from "@/components/ui/ArcoFoto";
+import HistoriaModal from "@/components/ui/HistoriaModal";
+import { history, historyPhotos } from "@/data/wedding-data";
 
 export default function NuestraHistoria(){
+    const foto = historyPhotos[0];
+
     return (
-        <section
-            id="historia"
-            className="scroll-mt-24 bg-cream py-24">
-                <div className="mx-auto max-w-6xl px-6">
-                    <div className="grid gap-12 items-center md:grid-cols-2">
-                        <div>
-                            <h2 className="font-serif text-4xl text-coffee leading-[1.1] md:text-5xl">
-                                Nuestra historia
-                            </h2>
+        <section id="historia" className="relative scroll-mt-24 overflow-hidden bg-cream pb-0 pt-12 lg:h-[30rem] lg:pt-0">
+            {/*Texto arriba: el botón queda lejos del borde inferior de la sección*/}
+            <div className="relative z-10 grid items-start gap-10 lg:h-full lg:grid-cols-2 lg:gap-0">
+                <div className="px-6 lg:pl-20 lg:pr-12 lg:pt-12">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta">
+                        {history.kicker}
+                    </p>
 
-                            {/*Divisor alineado a la izquierda */}
-                            <div className="mt-8 h-px w-16 bg-sand/60"/>
+                    <h2 className="mt-4 font-serif italic text-4xl leading-[1.1] text-coffee md:text-5xl">
+                        {history.title}
+                    </h2>
 
-                            <p className="mt-8 font-sans text-lg leading-relaxed text-ink/90 text-left md:text-justify">
-                                Nos conocimos en una tarde de lluvia de 2020, cuando ninguno
-                                de los dos esperaba encontrar algo así. Desde entonces, cada
-                                momento compartido se ha convertido en nuestro lugar favorito.
-                                Hoy queremos invitarte a caminar con nosotros el siguiente
-                                tramo de este camino.
-                            </p>
+                    <div className="mt-6 h-px w-16 bg-sand"/>
 
-                            {/*
-                               <details> es un elemento nativo de HTML:
-                                abre y cierra sin JavaScript, y ya es accesible con teclado.
-                                Por eso no hace falta convertir esta sección en client component.
-                            */}
-                            <details className="group mt-10">
-                                <summary className="inline-flex cursor-pointer list-none items-center gap-3 rounded-full border border-terracotta bg-transparent px-7 py-3 font-sans text-xs uppercase tracking-[0.2em] text-terracotta transition-colors duration-300 hover:border-cinnamon hover:bg-terracotta/10 hover:text-cinnamon [&::-webkit-details-marker]:hidden">
-                                    <span className="group-open:hidden">
-                                        Ver nuestra historia completa
-                                    </span>
-                                    <span className="hidden group-open:inline">
-                                        Ver menos
-                                    </span>
+                    <p className="mt-6 text-justify font-sans text-base leading-relaxed text-ink/80">
+                        {history.intro}
+                    </p>
 
-                                    <Image src="/icons/derecha.png" alt="" width={16} height={16} className="h-4 w-4 object-contain transition-transform duration-300 group-open:rotate-90"/>
-                                </summary>
-
-                                <div className="mt-6 space-y-4 border-l-2 border-sand/60 pl-6 font-sans text-base leading-relaxed text-ink/80 text-left md:text-justify">
-                                    <p>
-                                        Todo empezó con una conversación que se alargó hasta
-                                        la madrugada. Entre risas, planes y cafés, nos dimos
-                                        cuenta de que queríamos seguir contándonos la vida.
-                                    </p>
-                                    <p>
-                                        Desde entonces hemos aprendido que el amor también
-                                        está en las cosas pequeñas: una llamada a media tarde,
-                                        un plato compartido, una mano que se busca sin pensar.
-                                    </p>
-                                    <p>
-                                        Hoy, después de todo ese camino, elegimos celebrar
-                                        juntos el comienzo de una nueva etapa. Y queremos que
-                                        tú estés ahí.
-                                    </p>
-                                </div>
-                            </details>
-                        </div>
-
-                        <HistoriaCarrusel photos={historyPhotos}/>
+                    <div className="mt-6">
+                        <HistoriaModal />
                     </div>
                 </div>
+
+                {/*En móvil el arco sigue debajo del texto, como antes*/}
+                <div className="flex justify-end px-6 lg:hidden">
+                    <ArcoFoto
+                        src={foto.src}
+                        alt={foto.alt}
+                        sizes="90vw"
+                        className="aspect-square w-full max-w-[26rem]"
+                    />
+                </div>
+            </div>
+
+            {/*
+              En escritorio la foto es solo el lado derecho del arco:
+              mide media sección de alto (h-1/2) y queda anclada abajo (bottom-0),
+              el borde izquierdo baja recto y rounded-tl-[6rem] hace la pequeña onda.
+            */}
+            <div className="absolute bottom-0 right-0 hidden h-1/2 w-1/2 lg:block">
+                <ArcoFoto
+                    src={foto.src}
+                    alt={foto.alt}
+                    sizes="(min-width: 1024px) 50vw, 90vw"
+                    forma="rounded-tl-[6rem]"
+                    className="h-full w-full"
+                />
+            </div>
         </section>
     );
 }

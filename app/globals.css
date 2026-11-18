@@ -4,15 +4,16 @@
 /*
   Tokens de diseño
   Tailwind v4 lee este bloque y genera utilidades:
-  bg-cream, text-terracotta, border-sand, bg-coffe. etc.
+  bg-cream, text-terracotta, border-sand, bg-coffee. etc.
 */
 @theme {
-  --color-cream: #f3ebe1;
-  --color-sand: #d8bfa8;
-  --color-terracotta: #c08d52;
-  --color-cinnamon: #a66443;
-  --color-coffee: #5c3a21;
-  --color-ink: #1a1817;
+  --color-cream: #f4e9d8;
+  --color-sand: #d9be9b;
+  --color-camel: #c99a5b;
+  --color-terracotta: #b4653a;
+  --color-cinnamon: #8f4a2b;
+  --color-coffee: #4a2e20;
+  --color-ink: #1e1611;
 }
 
 /*
@@ -35,6 +36,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+
+  /*El diálogo abierto bloquea el scroll del fondo*/
+  body:has(dialog[open]) {
+    overflow: hidden;
   }
 
   /*Selección de texto con el color de acento*/

@@ -6,11 +6,8 @@ const navItems = [
 //{ label: "Inicio", href: "#inicio"},
 { label: "Historia", href: "#historia"},
 { label: "El gran día", href: "#gran-dia"},
-{ label: "Cronograma", href: "#cronograma"},
-{ label: "Vestimenta", href: "#vestimenta"},
-{ label: "Hospedaje", href: "#hospedaje"},
 { label: "Galería", href: "#galeria"},
-{ label: "Preguntas", href: "#faq"},
+{ label: "Vestimenta", href: "#vestimenta"},
 ];
 
 export default function Header() {
@@ -76,12 +73,6 @@ export default function Header() {
                                     </li>
                                 ))}
                             </ul>
-
-                            <a
-                                href="#rsvp"
-                                className="rounded-full bg-terracotta px-5 py-2.5 font-sans text-[11px] uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-cinnamon">
-                                    Confirmar
-                            </a>
                     </nav>
 
                     {/*Botón hamburguesa para móvil */}
@@ -128,15 +119,6 @@ export default function Header() {
                                     </li>
                                 ))}
                             </ul>
-
-                            <div className="px-6 pt-4 pb-6">
-                                <a
-                                    href="#rsvp"
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="block rounded-full bg-terracotta px-6 py-3 text-center font-sans text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-cinnamon">
-                                        Confirmar asistencia
-                                </a>
-                            </div>
                     </nav>
                 )}
         </header>

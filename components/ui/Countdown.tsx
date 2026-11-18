@@ -33,9 +33,11 @@ function getTimeLeft(targetDate: string): TimeLeft | null {
 type CountdownProps = {
     /** Fecha ISO con zona horaria, por ejemplo "2026-12-28T12:00:00-06:00" */
     targetDate: string;
+    //Permite que la sección decida dónde se alinean los números
+    className?: string;
 }
 
-export default function Countdown({targetDate}: CountdownProps){
+export default function Countdown({targetDate, className}: CountdownProps){
     //Tres estados posibles:
     //undefined = todavía no lo sabemos (servidor y primer render del cliente)
     //null = la fecha ya pasó
@@ -72,7 +74,7 @@ export default function Countdown({targetDate}: CountdownProps){
             role="timer"
             aria-live="off"
             aria-label="Cuenta regresiva para la boda"
-            className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-y-12 sm:grid-cols-4">
+            className={className || "mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-y-12 sm:grid-cols-4"}>
                 {units.map((unit) => (
                     <div
                         key={unit.label}

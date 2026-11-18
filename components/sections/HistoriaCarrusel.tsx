@@ -8,9 +8,11 @@ type Props = {
     photos: HistoryPhoto[];
     //Tiempo entre fotos, en milisegundos
     intervalo?: number;
+    //Cuando es true, el carrusel toma la forma de arco
+    arco?: boolean;
 };
 
-//React trae un hook para suscribirse a fuentes externas, como macthMedia.
+//React trae un hook para suscribirse a fuentes externas, como matchMedia.
 //Es la forma recomendada de leer "prefers-reduced-motion" sin usar un efecto.
 const QUERY_REDUCIR = "(prefers-reduced-motion: reduce)";
 
@@ -29,7 +31,7 @@ function subscribe(callback: () => void){
     return () => mq.removeEventListener("change", callback);
 }
 
-export default function HistoriaCarrusel({photos, intervalo = 4000}: Props){
+export default function HistoriaCarrusel({photos, intervalo = 4000, arco = false}: Props){
     const [activa, setActiva] = useState(0);
     const [pausado, setPausado] = useState(false);
 
@@ -65,7 +67,9 @@ export default function HistoriaCarrusel({photos, intervalo = 4000}: Props){
             }}>
 
                 {/*Todas las fotos viven apiladas; solo cambia la opacidad*/}
-                <div className="relative h-80 w-full overflow-hidden rounded-2xl border border-sand/50 md:h-[400px]">
+                <div className={`relative w-full overflow-hidden ${arco
+                    ? "aspect-[4/5] rounded-t-full lg:aspect-[3/4]"
+                    : "h-80 rounded-2xl border border-sand/50 md:h-[400px]"}`}>
                     {photos.map((photo, index) => (
                         <figure
                             key={photo.src}
@@ -76,7 +80,7 @@ export default function HistoriaCarrusel({photos, intervalo = 4000}: Props){
                                     src={photo.src}
                                     alt={photo.alt}
                                     fill
-                                    sizes="(min-width: 768px) 50vw, 100vw"
+                                    sizes={arco ? "(min-width: 1024px) 50vw, 90vw" : "(min-width: 768px) 50vw, 100vw"}
                                     className="object-cover"/>
                                 {/*Degradado para que la descripción se lea sobre la foto*/}
                                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/70 to-transparent" />
@@ -90,7 +94,7 @@ export default function HistoriaCarrusel({photos, intervalo = 4000}: Props){
                 </div>
 
                 {/*Puntos: botones de verdad, así que se manejan con Tab + Enter*/}
-                <div className="mt-5 flex justify-center gap-2">
+                <div className={`mt-5 flex gap-2 ${arco ? "justify-start px-2" : "justify-center"}`}>
                     {photos.map((photo, index) => (
                         <button 
                             key={photo.src}

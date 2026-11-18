@@ -1,11 +1,9 @@
 import Image from "next/image";
-//import PhotoPlaceholder from "@/components/ui/PhotoPlaceholder";
 import { couple, event, featuredPhotos } from "@/data/wedding-data";
-
 
 export default function Hero() {
     return (
-        <section id="inicio" className="relative flex min-h-svh items-center justify-center overflow-hidden">
+        <section id="inicio" className="relative flex min-h-[90svh] items-end overflow-hidden">
             {/*Fondo: hoy un placeholder, después la foto real*/}
             <div className="absolute inset-0">
                 <Image 
@@ -15,38 +13,42 @@ export default function Hero() {
                     priority
                     sizes="100vw"
                     className="object-cover"/>
-                <div className="absolute inset-0 bg-linear-to-b from-ink/70 via-ink/45 to-ink/80"/>
+
+                {/*Oscurece la izquieda para que el texto tenga contraste*/}
+                <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/45 to-ink/10"/>
+
+                {/*Oscurece la parte inferior, donde vive el texto*/}
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-ink/90 via-ink/25 to-transparent"/>
+
+                {/*El Header se lee sobre la foto*/}
+                <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-ink/50 to-transparent"/>
             </div>
 
-            {/*Contenido: texto y botones*/}
-            <div className="relative z-10 mx-auto max-w-4xl px-6 pt-32 pb-28 text-center text-white">
-                <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-cream/80">
-                    ¡Nos casamos!
-                </p>
+            {/*Contenido: alineado a la izquierda, sin centrar el contenedor*/}
+            <div className="relative z-10 max-w-6xl px-6 pb-16 pt-40 text-left text-white md:px-12 lg:pl-20 lg:pr-6">
+                <div className="max-w-xl">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-sand">
+                        Nuestra boda
+                    </p>
 
-                <h1 className="mt-8 font-serif text-5xl leading-[0.95] sm:text-8xl lg:text-9xl">
-                    {couple.groom}
-                    <span className="mx-2 inline-block italic text-sand md:mx-4">
-                        &
-                    </span>
-                    {couple.bride}
-                </h1>
+                    <h1 className="mt-6 font-serif italic text-5xl leading-[0.92] sm:text-7xl lg:text-8xl">
+                        {couple.bride}
+                        <span className="mx-2 inline-block text-camel md:mx-4">
+                            &
+                        </span>
+                        {couple.groom}
+                    </h1>
 
-                <div className="mx-auto mt-10 h-px w-20 bg-sand/70"/>
-
-                <p className="mt-10 font-sans text-xs uppercase tracking-[0.35em] text-cream">
-                    {event.dateLabel}
-                </p>
-                <p className="mt-3 font-sans text-[11px] uppercase tracking-[0.3em] text-cream/80">
-                    {event.timeLabel}
-                </p>
-                <p className="mt-3 font-sans text-[11px] uppercase tracking-[0.3em] text-cream/70">
-                    {event.city}
-                </p>
+                    <div className="mt-8 border-l border-terracotta/80 pl-6">
+                        <p className="font-sans text-xs uppercase tracking-[0.35em] text-cream">
+                            {event.dateLabel}
+                        </p>
+                    </div>
+                </div>
             </div>
 
             {/*Indicador para bajar */}
-            <a href="#bienvenida" aria-label="Ir a la bienvenida" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-cream/60 transition-colors duration-300 hover:text-cream">
+            <a href="#bienvenida" aria-label="Ir a la bienvenida" className="absolute bottom-8 right-6 z-10 text-cream/60 transition-colors duration-300 hover:text-cream md:right-10">
                 <svg
                     viewBox="0 0 24 24"
                     fill="none"
