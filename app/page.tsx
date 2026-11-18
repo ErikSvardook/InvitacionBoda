@@ -17,6 +17,8 @@ export default function Home() {
             <main>
                 <Hero/>
                 <Bienvenida/>
+                {/*Franja divisoria de color, sin texto*/}
+                <div aria-hidden="true" className="h-1 bg-terracotta"/>
                 <NuestraHistoria/>
                 <CuentaRegresiva/>
                 <ElGranDia/>

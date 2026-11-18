@@ -43,7 +43,7 @@ export default function ElGranDia(){
 
     return (
         <section id="gran-dia" className="scroll-mt-24 bg-cream py-16 lg:py-20">
-            <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-12 lg:items-center lg:gap-10">
+            <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-12 lg:items-center lg:gap-10 lg:translate-x-6">
                 {/*Columna izquierda: dos títulos y los tres datos con icono*/}
                 <div className="lg:col-span-4">
                     <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-terracotta">
@@ -123,7 +123,7 @@ export default function ElGranDia(){
                 {/*Columna derecha: programa centrado dentro de su celda para repartir el espacio*/}
                 <div className="lg:col-span-4">
                     <div className="mx-auto max-w-[16rem]">
-                        <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta">
+                        <p className="text-center font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta">
                             Programa del día
                         </p>
 
@@ -132,7 +132,7 @@ export default function ElGranDia(){
 
                             <ol className="space-y-7">
                                 {schedule.map((item) => (
-                                    <li key={item.time} className="relative pl-9">
+                                    <li key={item.time} className="relative px-9">
                                         <span
                                             aria-hidden="true"
                                             className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-cream bg-terracotta"/>

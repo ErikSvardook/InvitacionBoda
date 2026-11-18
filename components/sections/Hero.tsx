@@ -46,23 +46,6 @@ export default function Hero() {
                     </div>
                 </div>
             </div>
-
-            {/*Indicador para bajar */}
-            <a href="#bienvenida" aria-label="Ir a la bienvenida" className="absolute bottom-8 right-6 z-10 text-cream/60 transition-colors duration-300 hover:text-cream md:right-10">
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1}
-                    className="h-8 w-8"
-                    aria-hidden="true">
-                        <path 
-                            d="M12 4v14m0 0l-5-5m5 5l5-5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                </svg>
-            </a>
         </section>
     )
 }

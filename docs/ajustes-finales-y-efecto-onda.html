@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Últimos ajustes y efecto de la onda — Sonia &amp; David</title>
+<style>
+  @page { size: A4; margin: 15mm 14mm 16mm 14mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #1e1611;
+    font-size: 9.3pt;
+    line-height: 1.48;
+    margin: 0;
+  }
+  h1, h2, h3, h4 { font-family: "Constantia", "Georgia", serif; color: #4a2e20; margin: 0 0 8pt; }
+  h1 { font-size: 29pt; line-height: 1.05; }
+  h2 { font-size: 17pt; border-bottom: 2px solid #c99a5b; padding-bottom: 4pt; margin-top: 18pt; }
+  h3 { font-size: 12.5pt; margin-top: 13pt; color: #b4653a; }
+  h4 { font-size: 10.2pt; margin-top: 10pt; color: #8f4a2b; }
+  p { margin: 0 0 7pt; text-align: justify; }
+  ul, ol { margin: 0 0 8pt 16pt; padding: 0; }
+  li { margin-bottom: 3pt; }
+  code, pre { font-family: Consolas, "Courier New", monospace; font-size: 7.9pt; }
+  code { background: #f4e9d8; color: #4a2e20; padding: 0 2px; border-radius: 2px; }
+  pre {
+    background: #1e1611; color: #f4e9d8; padding: 8pt 10pt; border-radius: 4pt;
+    white-space: pre-wrap; overflow-wrap: anywhere; margin: 6pt 0 10pt;
+    line-height: 1.35;
+  }
+  pre code { background: none; color: inherit; padding: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 6pt 0 12pt; font-size: 8pt; }
+  th, td { border: 1px solid #d9be9b; padding: 4pt 5pt; vertical-align: top; text-align: left; }
+  th { background: #4a2e20; color: #f4e9d8; font-weight: 600; }
+  tr:nth-child(even) td { background: #faf5ec; }
+  .portada { text-align: center; padding: 50pt 0 30pt; }
+  .portada h1 { color: #b4653a; font-style: italic; }
+  .portada .sub { font-size: 13pt; color: #8f4a2b; }
+  .portada .meta { margin-top: 35pt; font-size: 9pt; color: #6d5240; }
+  .kicker {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 2px;
+    color: #b4653a; font-weight: 700; margin-bottom: 3pt;
+  }
+  .nota { background: #f4e9d8; border-left: 4px solid #b4653a; padding: 7pt 10pt; margin: 8pt 0 12pt; }
+  .aviso { background: #fff6e8; border: 1px solid #c99a5b; padding: 7pt 10pt; margin: 8pt 0 12pt; }
+  .exito { background: #eef4e8; border-left: 4px solid #6f8f52; padding: 7pt 10pt; margin: 8pt 0 12pt; }
+  .enfasis { background: #4a2e20; color: #f4e9d8; padding: 9pt 11pt; margin: 10pt 0 14pt; border-radius: 3pt; }
+  .enfasis strong { color: #f4e9d8; }
+  .page-break { page-break-before: always; }
+  .evitar { page-break-inside: avoid; }
+  .indice td:first-child { width: 34pt; color: #b4653a; font-weight: 700; }
+  .ruta { font-family: Consolas, monospace; font-size: 8pt; color: #8f4a2b; font-weight: 700; }
+  .small { font-size: 8pt; color: #6d5240; }
+  .linea { height: 1px; background: #d9be9b; margin: 10pt 0; }
+  .pregunta { font-family: "Constantia", Georgia, serif; font-size: 11pt; color: #8f4a2b; margin-top: 12pt; }
+  .respuesta { margin-left: 10pt; }
+  .figura { border: 1px solid #d9be9b; background: #faf5ec; padding: 8pt; margin: 8pt 0 12pt; }
+  .figura .titulo { font-size: 8pt; text-transform: uppercase; letter-spacing: 1px; color: #8f4a2b; margin-bottom: 6pt; }
+  .onda { position: relative; height: 95pt; background: #f4e9d8; border: 1px solid #c99a5b; overflow: hidden; }
+  .onda .foto { position: absolute; right: 0; top: 0; bottom: 0; width: 52%; background: #c99a5b; border-top-left-radius: 18rem 60%; }
+  .onda .foto::after { content: "foto"; position: absolute; right: 8pt; top: 45%; color: #4a2e20; font-size: 8pt; }
+  .onda .eje { position: absolute; left: 48%; top: 0; bottom: 0; border-left: 1px dashed #8f4a2b; }
+  .onda .ini { position: absolute; left: 49%; top: 60%; color: #8f4a2b; font-size: 7pt; }
+  .onda .fin { position: absolute; left: 66%; top: 3pt; color: #8f4a2b; font-size: 7pt; }
+  footer { margin-top: 24pt; border-top: 1px solid #d9be9b; padding-top: 6pt; font-size: 8pt; color: #6d5240; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="kicker">Documento técnico · Invitación de boda</p>
+  <h1>Sonia &amp; David</h1>
+  <p class="sub">Últimos ajustes y efecto de la onda</p>
+  <p>Los tres cambios finales de diseño, la explicación detallada de la curva de Nuestra Historia y las respuestas a tus preguntas sobre la continuidad de color en la fecha.</p>
+  <p class="meta">Next.js 16.4.5 · React 19.3.0 · Tailwind CSS 4 · TypeScript 5<br>
+  Documento generado el 18 de noviembre de 2026</p>
+</div>
+
+<div class="exito evitar">
+  <strong>Estado:</strong> los tres cambios pedidos en esta ronda ya están aplicados y verificados. Este PDF los documenta y,<br>
+  como pediste, <strong>no aplica</strong> el código de la sección final: ese código es solo una propuesta para que lo pegues tú si decides cambiar el efecto.
+</div>
+
+<div class="enfasis evitar">
+  <strong>Punto central de este documento.</strong> La parte más larga es la <strong>Parte II: la onda de Nuestra Historia</strong>.
+  Ahí explico qué es exactamente lo que se dibuja, por qué funciona, en qué archivo y línea vive, cómo cambiar la forma y
+  cómo cambiar el tamaño, con medidas reales antes y después.
+</div>
+
+<div class="aviso evitar">
+  <strong>No confundir con el PDF anterior.</strong> <code>docs/efecto-continuo-bienvenida.pdf</code> explica cómo el Hero
+  continúa por el lado derecho de Bienvenida con una fotografía. Este documento complementa esa explicación: incluye los
+  ajustes nuevos y responde qué pasaría si <strong>quitáramos esa fotografía</strong> y dejáramos solo color.
+</div>
+
+<div class="page-break"></div>
+<h2>Índice</h2>
+<table class="indice">
+  <tr><td>I</td><td>Los tres cambios finales (ya aplicados)</td></tr>
+  <tr><td>1</td><td>Bienvenida: separar el texto de la imagen</td></tr>
+  <tr><td>2</td><td>Franja divisoria entre Bienvenida e Historia</td></tr>
+  <tr><td>3</td><td>El Gran Día: correr el contenido y centrar el cronograma</td></tr>
+  <tr><td>II</td><td><strong>Énfasis: la onda de Nuestra Historia</strong></td></tr>
+  <tr><td>4</td><td>Qué se ve y qué es realmente</td></tr>
+  <tr><td>5</td><td>Dónde se define: archivos, línea y prop</td></tr>
+  <tr><td>6</td><td>Cómo funciona un radio doble</td></tr>
+  <tr><td>7</td><td>Medidas reales: antes y después</td></tr>
+  <tr><td>8</td><td>Cambiar la forma y cambiar el tamaño</td></tr>
+  <tr><td>9</td><td>Recetas y errores comunes</td></tr>
+  <tr><td>III</td><td>Preguntas y respuestas (código solo en el PDF)</td></tr>
+  <tr><td>10</td><td>Cómo funciona el efecto de la fecha</td></tr>
+  <tr><td>11</td><td>De dónde sale la imagen de fondo</td></tr>
+  <tr><td>12</td><td>Qué pasa si quitas la imagen</td></tr>
+  <tr><td>13</td><td>El color, la línea y la continuidad</td></tr>
+  <tr><td>14</td><td>Código para lograr continuidad solo con color</td></tr>
+  <tr><td>15</td><td>Comprobación final</td></tr>
+</table>
+
+<div class="nota">
+  <strong>Paleta vigente</strong> (tokens de <code>app/globals.css</code>): crema <code>#f4e9d8</code>, arena <code>#d9be9b</code>,
+  camello <code>#c99a5b</code>, terracota <code>#b4653a</code>, canela <code>#8f4a2b</code>, café <code>#4a2e20</code> y tinta <code>#1e1611</code>.
+  La franja nueva usa el token <code>terracotta</code>.
+</div>
+
+<h2>PARTE I — Los tres cambios finales (ya aplicados)</h2>
+
+<h3>1. Bienvenida: separar el texto de la imagen</h3>
+
+<p><span class="ruta">components/sections/Bienvenida.tsx</span>, línea 44. El párrafo de la izquierda terminaba en x=484 y el arco
+empezaba en x=520: solo <strong>12 px</strong> de separación, que es lo que se veía "muy junto". Se agregó una clase de padding
+derecho, sin mover la imagen ni cambiar el texto:</p>
+
+<pre><code>{/* Antes */}
+lg:w-[calc(50%-var(--ancho-arco)/2-4rem)] lg:-translate-y-1/2 lg:pt-0
+
+{/* Después: solo se añade lg:pr-6 */}
+lg:w-[calc(50%-var(--ancho-arco)/2-4rem)] <strong>lg:pr-6</strong> lg:-translate-y-1/2 lg:pt-0</code></pre>
+
+<p><code>lg:pr-6</code> = 24 px de padding derecho (Tailwind 4: 6 × 0.25 rem). El cuadro del texto mantiene su ancho, pero el
+contenido se aparta del borde derecho. Resultado medido a 1440 px:</p>
+
+<table>
+  <tr><th>Elemento</th><th>Antes</th><th>Después</th></tr>
+  <tr><td>Borde derecho del párrafo</td><td>x = 508</td><td>x = 484</td></tr>
+  <tr><td>Borde izquierdo del arco</td><td>x = 520</td><td>x = 520 (intacto)</td></tr>
+  <tr><td>Separación visible</td><td>12 px</td><td><strong>36 px</strong></td></tr>
+</table>
+
+<p>El prefijo <code>lg:</code> hace que el cambio exista solo desde 1024 px. En móvil el arco sigue debajo del texto y no se
+altera nada. La fecha tampoco se tocó: sigue en x=1202, a 298 px del arco.</p>
+
+<div class="page-break"></div>
+<h3>2. Franja divisoria entre Bienvenida e Historia</h3>
+
+<p><span class="ruta">app/page.tsx</span>. Se insertó un elemento decorativo entre las dos secciones. No es un componente, no
+tiene texto y no interviene en la navegación:</p>
+
+<pre><code>&lt;Hero/&gt;
+&lt;Bienvenida/&gt;
+{/* Franja divisoria de color, sin texto */}
+&lt;div aria-hidden="true" className="h-1 bg-terracotta"/&gt;
+&lt;NuestraHistoria/&gt;</code></pre>
+
+<ul>
+  <li><code>h-1</code> → 4 px de alto. Es una línea/rectángulo, no una sección con contenido.</li>
+  <li><code>bg-terracotta</code> → usa el token de la paleta (<code>#b4653a</code>). No se escribió un hex a mano.</li>
+  <li><code>aria-hidden="true"</code> → el lector de pantalla lo ignora porque no aporta información.</li>
+</ul>
+
+<p>Verificado en el navegador: el elemento está entre <code>#bienvenida</code> y <code>#historia</code>, mide <strong>4 px</strong>
+y su color computado es <code>rgb(180, 101, 58)</code>, que es exactamente el token terracota. Si quieres cambiar el tono,
+cambia solo <code>bg-terracotta</code> por <code>bg-sand</code> (más suave) o <code>bg-coffee</code> (más fuerte); si quieres
+más grosor, cambia <code>h-1</code> por <code>h-1.5</code> o <code>h-2</code>.</p>
+
+<h3>3. El Gran Día: correr el contenido y centrar el cronograma</h3>
+
+<p><span class="ruta">components/sections/ElGranDia.tsx</span>. Dos ajustes mínimos en la misma sección.</p>
+
+<h4>3.1 Correr el contenido un poco a la derecha</h4>
+<p>En el contenedor de las tres columnas se añadió <code>lg:translate-x-6</code>:</p>
+
+<pre><code>className="mx-auto grid max-w-6xl gap-12 px-6
+           lg:grid-cols-12 lg:items-center lg:gap-10 <strong>lg:translate-x-6</strong>"</code></pre>
+
+<p>Es una traslación visual de 24 px (6 × 4 px) que no recalcula anchos ni rompe el grid. Medido a 1440 px:</p>
+
+<table>
+  <tr><th>Elemento</th><th>Antes</th><th>Después</th></tr>
+  <tr><td>Borde izquierdo del grid</td><td>x = 136</td><td>x = 160</td></tr>
+  <tr><td>Borde derecho de la columna del cronograma</td><td>x = 1264</td><td>x = 1288</td></tr>
+  <tr><td>Espacio en blanco a la derecha</td><td>161 px</td><td><strong>137 px</strong></td></tr>
+</table>
+
+<h4>3.2 Centrar el cronograma respecto a su título</h4>
+<p>El título "Programa del día" empezaba en x=966 y el texto de la lista en x=1002, porque cada hora llevaba <code>pl-9</code>
+(36 px) para dejar sitio al punto y a la línea vertical. Eso desalineaba el bloque 18 px hacia la derecha. Se hicieron dos
+cambios complementarios:</p>
+
+<pre><code>{/* Título: se centra dentro de su caja de 256 px */}
+&lt;p className="<strong>text-center</strong> font-sans text-[11px] uppercase
+            tracking-[0.4em] text-terracotta"&gt;
+  Programa del día
+&lt;/p&gt;
+
+{/* Cada hora: misma separación a izquierda y derecha */}
+&lt;li key={item.time} className="relative <strong>px-9</strong>"&gt;</code></pre>
+
+<p>Al cambiar <code>pl-9</code> por <code>px-9</code>, el texto de la lista pasó de 256 px a 184 px de ancho, pero quedó
+centrado: el centro del título y el centro del texto son ahora <strong>x = 1118</strong> en los dos casos. La línea y los
+puntos siguen en el mismo sitio porque están en <code>left-0</code> dentro de cada <code>li</code>.</p>
+
+<div class="nota">
+  <strong>Por qué <code>px-9</code> y no mover la línea:</strong> el punto y el hilo del cronograma son la "sangría visual" de
+  la lista. Si se quita <code>pl-9</code>, el texto choca con el punto. Añadir la misma cantidad por la derecha conserva el
+  punto y compensa el desplazamiento, que es justo lo que significa centrar respecto al título.
+</div>
+
+<div class="page-break"></div>
+<h2>PARTE II — ÉNFASIS: la onda de Nuestra Historia</h2>
+
+<div class="enfasis evitar">
+  Esta es la parte que pediste explicar a fondo: <strong>qué se logró, cómo se logra, y qué y dónde modificar para cambiar
+  la forma y el tamaño de la imagen</strong>.
+</div>
+
+<h3>4. Qué se ve y qué es realmente</h3>
+
+<p>En escritorio, Nuestra Historia tiene una foto que ocupa <strong>todo el alto del lado derecho</strong> de la sección. Su
+esquina superior izquierda no es recta: baja recta un trecho y luego se curva hacia la derecha hasta el borde superior.
+A esa curva le decimos "la onda".</p>
+
+<div class="figura evitar">
+  <div class="titulo">Esquema de la onda (no a escala)</div>
+  <div class="onda">
+    <div class="foto"></div>
+    <div class="eje"></div>
+    <div class="ini">← la onda empieza aquí (abajo)</div>
+    <div class="fin">termina aquí →</div>
+  </div>
+</div>
+
+<p>Lo importante: <strong>no hay ningún SVG, ni <code>clip-path</code>, ni <code>mask-image</code></strong>. La curva la dibuja
+el navegador con una sola propiedad CSS de <code>border-radius</code>. La foto se recorta con esa misma forma porque su
+contenedor lleva <code>overflow-hidden</code>. Es la forma más simple y más robusta: si cambias el radio, la foto se adapta
+sola.</p>
+
+<h3>5. Dónde se define: archivos, línea y prop</h3>
+
+<table>
+  <tr><th>Qué se quiere cambiar</th><th>Archivo</th><th>Sitio exacto</th></tr>
+  <tr><td>La forma de la curva</td><td><code>components/sections/NuestraHistoria.tsx</code></td><td>Línea 54, prop <code>forma="rounded-tl-[18rem_60%]"</code></td></tr>
+  <tr><td>El comportamiento por defecto del marco</td><td><code>components/ui/ArcoFoto.tsx</code></td><td>Línea 19, <code>forma = "rounded-t-full"</code></td></tr>
+  <tr><td>Dónde se aplica la forma al contenedor</td><td><code>components/ui/ArcoFoto.tsx</code></td><td>Línea 22, <code>className={`relative overflow-hidden ... ${forma} ${className}`}</code></td></tr>
+  <tr><td>El ancho de la foto (cuánto lado derecho ocupa)</td><td><code>components/sections/NuestraHistoria.tsx</code></td><td>Línea 49, <code>absolute inset-y-0 right-0 w-1/2</code></td></tr>
+  <tr><td>El alto de la sección y de la foto</td><td><code>components/sections/NuestraHistoria.tsx</code></td><td>Línea 9, <code>lg:h-[30rem]</code>; línea 55, <code>h-full w-full</code></td></tr>
+  <tr><td>La versión móvil (arco completo)</td><td><code>components/sections/NuestraHistoria.tsx</code></td><td>Líneas 33–40: no recibe <code>forma</code>, usa el valor por defecto</td></tr>
+</table>
+
+<p>La prop <code>forma</code> existe precisamente para no editar <code>ArcoFoto</code> cada vez: el componente es reutilizable
+y cada sección le pasa la forma que necesita. Si borras la prop en Historia, esa foto vuelve al arco completo redondeado por
+arriba (<code>rounded-t-full</code>).</p>
+
+<h3>6. Cómo funciona un radio doble</h3>
+
+<p>La clase <code>rounded-tl-[18rem_60%]</code> se convierte en CSS en:</p>
+
+<pre><code>border-top-left-radius: 18rem 60%;</code></pre>
+
+<p>El guion bajo <code>_</code> dentro de los corchetes es importante: <strong>Tailwind lo convierte en un espacio</strong>.
+Sin él, <code>[18rem60%]</code> no sería válido y la clase no generaría CSS. El primer valor es el <strong>radio horizontal</strong>
+y el segundo el <strong>radio vertical</strong>:</p>
+
+<ul>
+  <li><strong>18rem = 288 px</strong> → mide cuánto se extiende la curva sobre el borde superior.</li>
+  <li><strong>60 % del alto</strong> → mide cuánto baja la curva por el borde izquierdo. Como la sección mide 480 px, 60 % = 288 px.</li>
+</ul>
+
+<p>Como los dos valen 288 px, la curva es un <strong>cuarto de círculo perfecto</strong>. Si los valores fueran distintos
+(por ejemplo <code>20rem 60%</code>), sería un cuarto de elipse: más ancha que alta o al revés. Eso también es válido y es
+otra forma de ajustar el dibujo.</p>
+
+<h3>7. Medidas reales: antes y después</h3>
+
+<table>
+  <tr><th>Concepto</th><th>Antes <code>15rem_50%</code></th><th>Ahora <code>18rem_60%</code></th></tr>
+  <tr><td>Radio horizontal</td><td>240 px</td><td>288 px</td></tr>
+  <tr><td>Radio vertical</td><td>50 % de 480 = 240 px</td><td>60 % de 480 = 288 px</td></tr>
+  <tr><td>La onda empieza en el borde izquierdo</td><td>y = 1530</td><td><strong>y = 1578</strong> (48 px más abajo)</td></tr>
+  <tr><td>La onda termina en el borde superior</td><td>x = 952</td><td><strong>x = 1000</strong> (48 px más a la derecha)</td></tr>
+  <tr><td>Borde izquierdo recto por debajo</td><td>240 px</td><td>192 px</td></tr>
+  <tr><td>Borde superior recto a la derecha</td><td>472 px</td><td>424 px</td></tr>
+  <tr><td>Tamaño de la foto a 1440 px</td><td colspan="2">712 × 480 px, pegada al borde derecho</td></tr>
+</table>
+
+<p>A 1024 px la foto mide 504 × 480 px: la onda sigue arrancando en y=1578 y cerrando 288 px después, y quedan 216 px de
+borde superior recto y 192 px de borde inferior. Ningún valor se sale del elemento, así que no aparece scroll horizontal.
+A 390 px se usa la versión móvil (<code>rounded-t-full</code>), que no se modificó.</p>
+
+<div class="page-break"></div>
+<h3>8. Cambiar la forma y cambiar el tamaño</h3>
+
+<h4>8.1 Cambiar solo la forma de la onda</h4>
+<p>Edita la línea 54 de <code>NuestraHistoria.tsx</code>. La fórmula es siempre <code>rounded-tl-[VALOR_HORIZONTAL_VALOR_VERTICAL]</code>:</p>
+
+<pre><code>// Más abajo y más a la derecha (lo que hicimos)
+forma="rounded-tl-[18rem_60%]"
+
+// Solo más abajo: sube el porcentaje
+forma="rounded-tl-[18rem_70%]"
+
+// Solo más a la derecha: sube los rem
+forma="rounded-tl-[21rem_60%]"
+
+// Más elipse, más ancha que alta
+forma="rounded-tl-[24rem_55%]"
+
+// Volver al arco completo de las demás secciones
+// (borra la prop forma; ArcoFoto aplica rounded-t-full)</code></pre>
+
+<div class="nota">
+  <strong>Trampa de Tailwind:</strong> dentro de <code>[...]</code> se usa guion bajo, no espacio. Escribe
+  <code>rounded-tl-[18rem_60%]</code>, nunca <code>rounded-tl-[18rem 60%]</code>. Y revisa siempre el estilo computado en el
+  inspector: <code>border-top-left-radius</code> debe mostrar <code>288px 60%</code>. Si muestra otro valor o nada, la clase
+  está mal escrita y Tailwind la ignoró en silencio.
+</div>
+
+<h4>8.2 Cambiar el tamaño de la imagen</h4>
+<p>Hay dos tamaños distintos que no hay que confundir:</p>
+
+<table>
+  <tr><th>Qué cambia</th><th>Dónde</th><th>Ejemplo</th></tr>
+  <tr><td>Cuánto lado derecho ocupa la foto</td><td>Línea 49, <code>w-1/2</code></td><td><code>w-[55%]</code> → más ancha; <code>w-[45%]</code> → más estrecha</td></tr>
+  <tr><td>El alto de toda la sección (y por tanto de la foto)</td><td>Línea 9, <code>lg:h-[30rem]</code></td><td><code>lg:h-[34rem]</code> → 544 px de alto</td></tr>
+  <tr><td>Que la foto no llegue arriba o abajo</td><td>Línea 49, <code>inset-y-0</code></td><td><code>top-8 bottom-0</code> → 32 px de hueco arriba</td></tr>
+</table>
+
+<p>La foto llena su caja con <code>h-full w-full</code> (línea 55) y <code>fill</code> + <code>object-cover</code> dentro de
+<code>ArcoFoto</code>. Por eso, al cambiar el alto de la sección, la onda se recalcula automáticamente: el radio vertical es
+un porcentaje y sigue siendo el 60 % del nuevo alto. El horizontal, al ser <code>rem</code>, no cambia. Esa es la razón de
+mezclar rem y porcentaje: el ancho queda fijo y el alto acompaña a la sección.</p>
+
+<h3>9. Recetas y errores comunes</h3>
+
+<ul>
+  <li><strong>La curva desapareció:</strong> revisa el guion bajo y que <code>ArcoFoto</code> siga teniendo <code>overflow-hidden</code>.</li>
+  <li><strong>La curva es demasiado grande en pantallas pequeñas:</strong> usa un valor con <code>clamp()</code>, por ejemplo <code>rounded-tl-[clamp(10rem,20vw,18rem)_60%]</code>.</li>
+  <li><strong>Quieres que empiece más arriba:</strong> baja el porcentaje; <code>50%</code> la deja en la mitad, <code>40%</code> más arriba.</li>
+  <li><strong>Quieres que cierre antes:</strong> baja los rem; <code>12rem</code> cierra en x=192.</li>
+  <li><strong>Se ve una línea recta rara:</strong> casi siempre es un padding o un borde en el contenedor de la foto; la curva necesita que el contenedor no tenga borde propio.</li>
+  <li><strong>La versión móvil cambió sin querer:</strong> solo se edita la rama de escritorio. El bloque móvil (líneas 33–40) no pasa <code>forma</code>.</li>
+</ul>
+
+<div class="page-break"></div>
+<h2>PARTE III — Preguntas y respuestas</h2>
+
+<p class="pregunta">10. En Bienvenida, en la sección de la fecha, ¿cómo funciona el efecto que nos costó trabajo lograr?</p>
+<p class="respuesta">El truco no es pegar dos fondos, sino <strong>dejar uno solo detrás</strong>. Hay una capa con la misma foto
+del Hero que va desde el centro de la sección hasta el borde derecho (<code>absolute inset-y-0 left-1/2 right-0</code>).
+Encima se dibuja el arco con <code>z-10</code>, que tapa la parte baja de esa capa. Donde el arco tiene su curva, la capa
+queda descubierta: ahí aparece la "cuña" oscura que parece un triángulo. La fecha va en otra capa <code>z-10</code> encima
+de todo, en color crema para que se lea. La línea terracota que antes marcaba el límite ya se quitó, así que no hay costura.</p>
+
+<p class="pregunta">11. ¿La imagen de fondo se aplica directamente en su clase o de dónde se toma?</p>
+<p class="respuesta">No está en ninguna clase CSS. Se toma de los datos: <code>featuredPhotos.hero</code> en
+<span class="ruta">data/wedding-data.ts</span>, y se pasa al componente en la línea 30 de Bienvenida:</p>
+
+<pre><code>&lt;Image
+  src={featuredPhotos.hero}   // ← ruta centralizada en wedding-data.ts
+  alt=""
+  fill
+  sizes="(min-width: 1024px) 50vw, 90vw"
+  className="object-cover object-center"   // ← la clase solo coloca y recorta
+/&gt;</code></pre>
+
+<p class="respuesta">La clase <code>object-cover object-center</code> no trae la imagen: solo dice cómo escalarla y desde dónde
+recortarla. Como Bienvenida usa el mismo <code>featuredPhotos.hero</code> que el Hero principal, los dos comparten archivo y
+por eso el tono continúa sin cambio de encuadre.</p>
+
+<p class="pregunta">12. ¿Qué pasa si quito la imagen de fondo?</p>
+<p class="respuesta">Quedan los tres velos, pero todos son <strong>semitransparentes</strong>:</p>
+
+<pre><code>&lt;div className="absolute inset-0 bg-ink/55"/&gt;
+&lt;div className="absolute inset-0 bg-linear-to-r from-ink/70 via-ink/40 to-ink/20"/&gt;
+&lt;div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-ink/70 via-ink/20 to-transparent"/&gt;</code></pre>
+
+<p class="respuesta">Debajo de ellos está el fondo crema de la sección (<code>bg-linear-to-br from-cream via-cream to-sand/30</code>).
+El resultado sería un <strong>café claro o crema teñido</strong>, no el tono oscuro del Hero. La cuña perdería su efecto y la
+fecha, que en escritorio es <code>lg:text-cream</code>, quedaría crema sobre fondo claro: mal contraste y difícil de leer.
+Quitar la imagen sin rellenar con un color opaco deja la sección a medias.</p>
+
+<p class="pregunta">13. Si quito la imagen, ¿se mantiene el mismo color actual? ¿Y la línea divisoria? ¿Parecerá continua?</p>
+<p class="respuesta"><strong>El color no se mantiene solo:</strong> hay que reemplazar la foto por un fondo opaco. El extremo
+inferior derecho del Hero lleva tinta al 90 % sobre la foto, así que visualmente está muy cerca de <code>#1e1611</code>
+(token <code>ink</code>). Un <code>bg-ink</code> plano es la mejor aproximación; <code>bg-coffee</code> (<code>#4a2e20</code>)
+daría un café más claro.</p>
+
+<p class="respuesta"><strong>La línea ya no existe:</strong> se eliminó en el ajuste anterior (el <code>div</code> con
+<code>w-px bg-terracotta/60</code>). Quitar la foto no la afecta. Si al cambiar ves un "corte", no es una línea dibujada:
+es una diferencia de tono entre el degradado del Hero y el color nuevo.</p>
+
+<p class="respuesta"><strong>Sí parecerá una sección continua de ese lado</strong> si el color opaco elegido coincide con el
+tono con el que termina el Hero y si el arco sigue tapando la parte izquierda. Para que el empalme sea exacto, conviene que
+el Hero termine en una franja corta del mismo color sólido.</p>
+
+<div class="page-break"></div>
+<h3>14. Código para lograr continuidad solo con color <span class="small">(NO aplicado)</span></h3>
+
+<div class="aviso evitar">
+  <strong>Esto es una propuesta.</strong> No lo pegué en el proyecto. Si lo aplicas, la fotografía del lado derecho de
+  Bienvenida desaparece y queda un bloque de color liso. Guarda antes una copia de <code>Bienvenida.tsx</code>.
+</div>
+
+<p><strong>A. Reemplazar la capa de la imagen por una capa de color</strong> — en
+<span class="ruta">components/sections/Bienvenida.tsx</span>, cambia el bloque completo de la capa del Hero (líneas 23–40) por:</p>
+
+<pre><code>{/*
+  Capa continua de COLOR, sin fotografía.
+  Sigue naciendo en el centro y el arco sigue tapando su parte baja,
+  así que la cuña curva se rellena con el mismo tono que el bloque derecho.
+*/}
+&lt;div aria-hidden="true"
+     className="absolute inset-y-0 left-1/2 right-0 hidden lg:block bg-ink"&gt;
+
+  {/*Degradado muy suave: apenas cambia el tono de izquierda a derecha*/}
+  &lt;div className="absolute inset-0 bg-linear-to-r from-ink via-ink/95 to-ink/90"/&gt;
+
+  {/*Misma idea de profundidad que el Hero, sin foto debajo*/}
+  &lt;div className="absolute inset-x-0 bottom-0 h-1/3
+                  bg-linear-to-t from-ink/80 to-transparent"/&gt;
+&lt;/div&gt;</code></pre>
+
+<p><strong>B. Ajustar el final del Hero para que el empalme no se note</strong> — en
+<span class="ruta">components/sections/Hero.tsx</span>, añade una franja opaca justo al final del bloque de velos:</p>
+
+<pre><code>{/*Franja de tinta pura: el color con el que continúa Bienvenida*/}
+&lt;div className="absolute inset-x-0 bottom-0 h-8 bg-ink"/&gt;</code></pre>
+
+<p><strong>C. Limpiar imports</strong> — al quitar el <code>&lt;Image&gt;</code> de Bienvenida, ese archivo ya no usa
+<code>next/image</code>. Quita esta línea:</p>
+
+<pre><code>- import Image from "next/image";</code></pre>
+
+<p>Mantén <code>featuredPhotos</code> en el import de datos: sigue sirviendo para la foto del arco
+(<code>featuredPhotos.welcome</code>). El componente <code>FechaVertical</code> no necesita cambios: sus clases
+<code>lg:text-cream</code> siguen siendo correctas sobre <code>bg-ink</code>.</p>
+
+<div class="nota">
+  <strong>Variante más cálida:</strong> si <code>#1e1611</code> se ve demasiado oscuro, cambia <code>bg-ink</code> por
+  <code>bg-coffee</code> en la capa A y usa <code>from-coffee</code> en la franja B. Los dos lados deben usar el mismo token
+  para que no aparezca la costura que estamos evitando.
+</div>
+
+<p class="pregunta">15. ¿Sí explicaste bien lo que quieres lograr?</p>
+<p class="respuesta">Sí. Quieres que el lado derecho de Bienvenida se lea como una <strong>continuación de color del Hero</strong>,
+sin que se vea una fotografía de fondo en esa franja, y sin la línea divisoria (que ya está quitada). Es decir: mismo tono
+oscuro, la cuña curva rellena con ese tono, la fecha encima y el arco tapando el resto. El código de la sección 14 es
+exactamente eso, y sigue sin estar aplicado.</p>
+
+<div class="page-break"></div>
+<h2>15. Comprobación final de los cambios aplicados</h2>
+
+<table>
+  <tr><th>Comprobación</th><th>Resultado</th></tr>
+  <tr><td>Separación texto ↔ arco en Bienvenida</td><td>36 px (antes 12 px)</td></tr>
+  <tr><td>Franja entre bienvenida y historia</td><td>4 px, <code>rgb(180, 101, 58)</code>, sin texto</td></tr>
+  <tr><td>Desplazamiento del contenido de El Gran Día</td><td>24 px a la derecha</td></tr>
+  <tr><td>Centro del título del cronograma</td><td>x = 1118</td></tr>
+  <tr><td>Centro del texto del cronograma</td><td>x = 1118 (alineado)</td></tr>
+  <tr><td>Onda de Historia a 1440 px</td><td>y 1578 → x 1000, radio 288 × 288</td></tr>
+  <tr><td>Versión móvil de Historia</td><td><code>rounded-t-full</code>, sin cambios</td></tr>
+  <tr><td>Scroll horizontal</td><td>no</td></tr>
+  <tr><td><code>npx tsc --noEmit</code></td><td>limpio</td></tr>
+  <tr><td><code>npm run lint</code></td><td>limpio</td></tr>
+  <tr><td>Consola del navegador (carga limpia)</td><td>sin errores</td></tr>
+  <tr><td>Código de la sección 14</td><td><strong>solo en este PDF, no aplicado</strong></td></tr>
+</table>
+
+<footer>
+  Documento: <code>docs/ajustes-finales-y-efecto-onda.html</code> · Generado desde el estado del 18 de noviembre de 2026.<br>
+  Archivos implicados: <code>app/page.tsx</code>, <code>components/sections/Bienvenida.tsx</code>,
+  <code>components/sections/NuestraHistoria.tsx</code>, <code>components/sections/ElGranDia.tsx</code>,
+  <code>components/ui/ArcoFoto.tsx</code>, <code>components/ui/FechaVertical.tsx</code> y <code>data/wedding-data.ts</code>.
+</footer>
+
+</body>
+</html>

@@ -42,16 +42,16 @@ export default function NuestraHistoria(){
 
             {/*
               En escritorio la foto ocupa todo el alto de la sección. El radio horizontal
-              (15rem = 240 px) cierra la curva mucho antes de la esquina y el vertical
-              (50 % = 240 px) la hace arrancar desde la mitad: un cuarto de círculo
-              equilibrado, con el borde recto por debajo.
+              (18rem = 288 px) lleva la curva más a la derecha y el vertical (60 % = 288 px)
+              la hace arrancar más abajo: se mantiene el cuarto de círculo equilibrado,
+              con el borde recto por debajo.
             */}
             <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
                 <ArcoFoto
                     src={foto.src}
                     alt={foto.alt}
                     sizes="(min-width: 1024px) 50vw, 90vw"
-                    forma="rounded-tl-[15rem_50%]"
+                    forma="rounded-tl-[18rem_60%]"
                     className="h-full w-full"
                 />
             </div>
