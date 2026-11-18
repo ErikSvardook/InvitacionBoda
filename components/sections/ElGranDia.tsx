@@ -120,38 +120,40 @@ export default function ElGranDia(){
                     )}
                 </div>
 
-                {/*Columna derecha: programa del día en vertical*/}
+                {/*Columna derecha: programa centrado dentro de su celda para repartir el espacio*/}
                 <div className="lg:col-span-4">
-                    <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta">
-                        Programa del día
-                    </p>
+                    <div className="mx-auto max-w-[16rem]">
+                        <p className="font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta">
+                            Programa del día
+                        </p>
 
-                    <div className="relative mt-6">
-                        <span aria-hidden="true" className="absolute inset-y-2 left-[7px] w-px bg-sand/70"/>
+                        <div className="relative mt-6">
+                            <span aria-hidden="true" className="absolute inset-y-2 left-[7px] w-px bg-sand/70"/>
 
-                        <ol className="space-y-7">
-                            {schedule.map((item) => (
-                                <li key={item.time} className="relative pl-9">
-                                    <span
-                                        aria-hidden="true"
-                                        className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-cream bg-terracotta"/>
+                            <ol className="space-y-7">
+                                {schedule.map((item) => (
+                                    <li key={item.time} className="relative pl-9">
+                                        <span
+                                            aria-hidden="true"
+                                            className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-cream bg-terracotta"/>
 
-                                    <p className="font-serif text-xl text-coffee">
-                                        {item.time}
-                                    </p>
-
-                                    <h3 className="mt-0.5 font-sans text-[10px] uppercase tracking-[0.2em] text-terracotta">
-                                        {item.title}
-                                    </h3>
-
-                                    {item.description && (
-                                        <p className="mt-0.5 font-sans text-xs leading-relaxed text-ink/70">
-                                            {item.description}
+                                        <p className="font-serif text-xl text-coffee">
+                                            {item.time}
                                         </p>
-                                    )}
-                                </li>
-                            ))}
-                        </ol>
+
+                                        <h3 className="mt-0.5 font-sans text-[10px] uppercase tracking-[0.2em] text-terracotta">
+                                            {item.title}
+                                        </h3>
+
+                                        {item.description && (
+                                            <p className="mt-0.5 font-sans text-xs leading-relaxed text-ink/70">
+                                                {item.description}
+                                            </p>
+                                        )}
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>

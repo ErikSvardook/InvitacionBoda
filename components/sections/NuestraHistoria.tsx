@@ -41,16 +41,17 @@ export default function NuestraHistoria(){
             </div>
 
             {/*
-              En escritorio la foto es solo el lado derecho del arco:
-              mide media sección de alto (h-1/2) y queda anclada abajo (bottom-0),
-              el borde izquierdo baja recto y rounded-tl-[6rem] hace la pequeña onda.
+              En escritorio la foto ocupa todo el alto de la sección. El radio horizontal
+              (15rem = 240 px) cierra la curva mucho antes de la esquina y el vertical
+              (50 % = 240 px) la hace arrancar desde la mitad: un cuarto de círculo
+              equilibrado, con el borde recto por debajo.
             */}
-            <div className="absolute bottom-0 right-0 hidden h-1/2 w-1/2 lg:block">
+            <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
                 <ArcoFoto
                     src={foto.src}
                     alt={foto.alt}
                     sizes="(min-width: 1024px) 50vw, 90vw"
-                    forma="rounded-tl-[6rem]"
+                    forma="rounded-tl-[15rem_50%]"
                     className="h-full w-full"
                 />
             </div>

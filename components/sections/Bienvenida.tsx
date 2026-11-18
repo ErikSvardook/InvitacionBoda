@@ -12,8 +12,8 @@ export default function Bienvenida() {
                 className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-terracotta/10 blur-3xl"/>
 
             <div className="relative mx-auto grid max-w-6xl gap-8 px-6 lg:grid-cols-12 lg:items-stretch lg:gap-20">
-                {/*Columna izquierda: texto, un poco más a la derecha*/}
-                <div className="flex items-center pt-14 lg:col-span-5 lg:pl-8 lg:pt-16">
+                {/*Columna izquierda: texto más hacia el borde, con el tope derecho fijo*/}
+                <div className="flex items-center pt-14 lg:col-span-5 lg:pl-4 lg:pt-16">
                     <div className="max-w-xl">
                         <h2 className="font-serif italic text-4xl leading-[1.08] text-coffee md:text-5xl">
                             {welcome.title}
@@ -31,7 +31,7 @@ export default function Bienvenida() {
                     </div>
                 </div>
 
-                {/*Columna central: el arco llena el alto libre, desde el título hasta el final de la sección*/}
+                {/*Columna central: arco del ancho de la foto de El Gran Día (4 columnas)*/}
                 <div className="flex flex-col justify-end pt-14 lg:col-span-4 lg:pt-16">
                     <ArcoFoto
                         src={featuredPhotos.welcome}
@@ -41,8 +41,8 @@ export default function Bienvenida() {
                     />
                 </div>
 
-                {/*Columna derecha: la fecha vuelve a ir en vertical*/}
-                <div className="relative flex items-center justify-center lg:col-span-3 lg:-mr-6">
+                {/*Columna derecha: fecha más estrecha y desplazada hacia la derecha*/}
+                <div className="relative flex items-center justify-center lg:col-span-3 lg:-mr-10">
                     <div aria-hidden="true" className="absolute inset-0 hidden lg:block">
                         <Image
                             src={featuredPhotos.hero}
