@@ -22,8 +22,8 @@ export const event = {
      * Cuautitlán Izcalli usa UTC-6 todo el año (desde 2022 ya no hay horario de verano)
      * Apunta al inicio de la ceremonia (5:00 PM), que es cuando arranca el gran día.
      */
-    dateIso: "2026-12-28T17:00:00-06:00",
-    dateLabel: "28 de diciembre de 2026",
+    dateIso: "2027-04-17T17:00:00-06:00",
+    dateLabel: "17 de abril de 2027",
     timeLabel: "5:00 de la tarde",
     city: "Cuautitlán Izcalli, Estado de México"
 } as const;
@@ -72,7 +72,7 @@ export const ceremony: Venue = {
     address,
     time: "5:00 PM",
     mapsUrl,
-    image: "/imagesPrueba/gale4.jpg",
+    image: "/imagesPrueba/iglesia.jpg",
     imageAlt: "Foto de prueba del lugar de la ceremonia",
 };
 
@@ -123,19 +123,22 @@ export const galleryPhotos: GalleryPhoto[] = [
     {src: "/imagesPrueba/gale3.jpg", alt: "Sonia y David", caption: "Celebrando en familia.", size: "normal"},
     {src: "/imagesPrueba/gale4.jpg", alt: "Sonia y David", caption: "Ese día que no queremos olvidar.", size: "normal"},
     {src: "/imagesPrueba/gale5.jpg", alt: "Sonia y David", caption: "La pedida, por fin.", size: "ancho"},
-    {src: "/imagesPrueba/gale6.jpg", alt: "Sonia y David", caption: "Listos para el siguiente capítulo.", size: "ancho"},
+    {src: "/imagesPrueba/gale6.jpg", alt: "Sonia y David", caption: "Pinic.", size: "ancho"},
+    {src: "/imagesPrueba/gale7.png", alt: "Sonia y David", caption: "Viaje a Puebla.", size: "ancho"},
+    {src: "/imagesPrueba/gale8.jpg", alt: "Sonia y David", caption: "El mar.", size: "ancho"},
+    {src: "/imagesPrueba/gale9.jpg", alt: "Sonia y David", caption: "Noche estrellada.", size: "ancho"},
 ];
 
 //Rutas para las fotos destacadas
 //Al pasar a las fotos definitivas: cambiar imagesPrueba -> images, solo aquí
 export const featuredPhotos = {
-    hero: "/imagesPrueba/hero.jpg",
-    welcome: "/imagesPrueba/gale2.jpg",
+    hero: "/imagesPrueba/heroAtardecer.jpg",
+    welcome: "/imagesPrueba/bienvenida.jpg",
     //Fondo de la banda entre Bienvenida e Historia, y del contador
-    banda: "/imagesPrueba/casados.jpg",
-    countdown: "/imagesPrueba/casados.jpg",
+    banda: "/imagesPrueba/manos.jpg",
+    countdown: "/imagesPrueba/montanas2.jpg",
     //Foto del lado derecho de Vestimenta (forma exponencial)
-    dressCode: "/imagesPrueba/vestidoNovia.png",
+    dressCode: "/imagesPrueba/vestimentaNovia.jpg",
 }
 
 //Carrusel de historia: cada foto con su descripción
@@ -147,15 +150,10 @@ export type HistoryPhoto = {
 
 export const historyPhotos: HistoryPhoto[] = [
     {
-        src: "/imagesPrueba/historias.jpg",
+        src: "/imagesPrueba/historia.jpg",
         alt: "Sonia y David en su primera salida",
         caption: "Nuestra primera salida, 2020.",
-    },
-    {
-        src: "/imagesPrueba/historia2.png",
-        alt: "Sonia y David en el parque",
-        caption: "El parque donde caminamos tantas tardes.",
-    },
+    }
 ];
 
 //Despedida
