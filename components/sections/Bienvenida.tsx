@@ -1,7 +1,7 @@
-import Image from "next/image";
 import type { CSSProperties } from "react";
 import ArcoFoto from "@/components/ui/ArcoFoto";
 import FechaVertical from "@/components/ui/FechaVertical";
+import Ramas from "@/components/ui/Ramas";
 import { couple, welcome, featuredPhotos } from "@/data/wedding-data";
 
 export default function Bienvenida() {
@@ -21,23 +21,16 @@ export default function Bienvenida() {
                 className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-terracotta/10 blur-3xl"/>
 
             {/*
-              Una sola capa de Hero va desde el centro de la sección hasta el borde derecho.
-              El arco se dibuja encima: tapa la parte baja y deja ver el mismo tono del Hero
-              en la cuña curva de la esquina superior derecha, sin costura con el bloque derecho.
+              Continuidad de COLOR: la capa nace en el centro y llega al borde derecho con
+              un gris cálido más tenue. El Hero termina en el mismo gris, así que no hay costura.
             */}
-            <div aria-hidden="true" className="absolute inset-y-0 left-1/2 right-0 hidden lg:block">
-                <Image
-                    src={featuredPhotos.hero}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 90vw"
-                    className="object-cover object-center"/>
-
-                {/*Mismos velos del Hero, para que la continuación no se note*/}
-                <div className="absolute inset-0 bg-ink/55"/>
-                <div className="absolute inset-0 bg-linear-to-r from-ink/70 via-ink/40 to-ink/20"/>
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-ink/70 via-ink/20 to-transparent"/>
+            <div aria-hidden="true" className="absolute inset-y-0 left-1/2 right-0 hidden bg-gris lg:block">
+                <div className="absolute inset-0 bg-linear-to-r from-gris via-gris/95 to-gris/90"/>
             </div>
+
+            {/*Ramas estáticas en los márgenes: no tapan el texto porque este lleva z-10*/}
+            <Ramas className="absolute -left-16 -top-10 hidden h-[26rem] w-[26rem] text-terracotta/20 lg:block"/>
+            <Ramas volteada className="absolute bottom-0 right-0 hidden h-80 w-80 text-sand/25 lg:block"/>
 
             <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-6 lg:block">
                 {/*Columna izquierda: mismo párrafo justificado que Historia y más horizontal*/}
@@ -69,7 +62,7 @@ export default function Bienvenida() {
                 </div>
 
                 {/*Derecha: fecha clara sobre el continuo del Hero*/}
-                <div className="relative z-10 flex justify-center lg:absolute lg:right-10 lg:top-1/2 lg:w-64 lg:-translate-y-1/2">
+                <div className="relative z-10 flex justify-center lg:absolute lg:right-0 lg:top-1/2 lg:w-1/2 lg:translate-x-20 lg:-translate-y-1/2">
                     <FechaVertical />
                 </div>
             </div>

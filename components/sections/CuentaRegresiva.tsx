@@ -1,10 +1,19 @@
-import { event } from "@/data/wedding-data";
+import { event, featuredPhotos } from "@/data/wedding-data";
 import Countdown from "@/components/ui/Countdown";
 
 export default function CuentaRegresiva() {
     return (
-        <section id="countdown" className="scroll-mt-24 bg-coffee py-16 lg:py-20">
-            <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-5 lg:items-center lg:gap-16">
+        <section
+            id="countdown"
+            className="relative isolate flex h-[var(--altura-banda)] items-center scroll-mt-24 overflow-hidden bg-coffee py-16 lg:py-20">
+            {/*Foto de fondo y velo: la misma altura que la banda divisoria de arriba*/}
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 -z-20 bg-cover bg-center"
+                style={{ backgroundImage: `url('${featuredPhotos.countdown}')` }}/>
+            <div aria-hidden="true" className="absolute inset-0 -z-10 bg-coffee/85"/>
+
+            <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-5 lg:items-center lg:gap-16">
                 {/*Información a la izquierda*/}
                 <div className="lg:col-span-2">
                     <h2 className="mt-5 font-serif italic text-4xl leading-[1.1] text-cream md:text-5xl">

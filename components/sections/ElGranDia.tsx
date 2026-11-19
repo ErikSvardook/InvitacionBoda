@@ -1,5 +1,5 @@
 import ArcoFoto from "@/components/ui/ArcoFoto";
-import { ceremony, event, reception, schedule } from "@/data/wedding-data";
+import { ceremony, event, schedule } from "@/data/wedding-data";
 
 type IconoProps = { className?: string };
 
@@ -37,13 +37,13 @@ export default function ElGranDia(){
     //Tres puntos verticales con sus iconos: fecha, hora y dirección
     const datos = [
         { id: "fecha", etiqueta: "Fecha", valor: event.dateLabel, Icono: IconoCalendario },
-        { id: "hora", etiqueta: "Hora", valor: `${ceremony.time} · ${reception.time}`, Icono: IconoReloj },
+        { id: "hora", etiqueta: "Hora", valor: `${ceremony.time}`, Icono: IconoReloj },
         { id: "direccion", etiqueta: "Dirección", valor: venue.address, Icono: IconoUbicacion },
     ];
 
     return (
         <section id="gran-dia" className="scroll-mt-24 bg-cream py-16 lg:py-20">
-            <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-12 lg:items-center lg:gap-10 lg:translate-x-6">
+            <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-12 lg:items-center lg:gap-10 xl:translate-x-6">
                 {/*Columna izquierda: dos títulos y los tres datos con icono*/}
                 <div className="lg:col-span-4">
                     <p className="font-sans text-[11px] uppercase tracking-[0.45em] text-terracotta">
@@ -120,22 +120,27 @@ export default function ElGranDia(){
                     )}
                 </div>
 
-                {/*Columna derecha: programa centrado dentro de su celda para repartir el espacio*/}
+                {/*Columna derecha: el título se corre 12 px a la izquierda para centrarlo sobre el conjunto eje + texto*/}
                 <div className="lg:col-span-4">
                     <div className="mx-auto max-w-[16rem]">
-                        <p className="text-center font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta">
+                        <p className="-translate-x-6 text-center font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta">
                             Programa del día
                         </p>
 
-                        <div className="relative mt-6">
-                            <span aria-hidden="true" className="absolute inset-y-2 left-[7px] w-px bg-sand/70"/>
+                        {/*Texto centrado bajo el título; eje y puntos a la izquierda del texto*/}
+                        <div className="relative mx-auto mt-6 w-fit max-w-full pl-6 pr-6">
+                            <span
+                                aria-hidden="true"
+                                className="absolute inset-y-2 left-[7px] w-px -translate-x-1/2 bg-sand/70"
+                            />
 
-                            <ol className="space-y-7">
+                            <ol className="space-y-6 text-center">
                                 {schedule.map((item) => (
-                                    <li key={item.time} className="relative px-9">
+                                    <li key={item.time} className="relative">
                                         <span
                                             aria-hidden="true"
-                                            className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-cream bg-terracotta"/>
+                                            className="absolute -left-6 top-1 h-3.5 w-3.5 rounded-full border-2 border-cream bg-terracotta"
+                                        />
 
                                         <p className="font-serif text-xl text-coffee">
                                             {item.time}

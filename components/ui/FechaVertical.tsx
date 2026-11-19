@@ -9,7 +9,7 @@ export default function FechaVertical({ className = "" }: Props){
         <time
             dateTime={event.dateIso}
             aria-label={event.dateLabel}
-            className={`flex flex-col gap-3 ${className}`}>
+            className={`flex flex-col items-center gap-3 ${className}`}>
                 {/*El nombre del día en tinta sobre crema y en crema sobre el fondo oscuro*/}
                 <span className="font-serif text-2xl italic uppercase tracking-[0.18em] text-ink md:text-3xl lg:text-cream">
                     {eventParts.weekday}

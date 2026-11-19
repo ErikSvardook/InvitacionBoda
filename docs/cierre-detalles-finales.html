@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cierre de detalles finales — Sonia &amp; David</title>
+<style>
+  @page { size: A4; margin: 15mm 14mm 16mm 14mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #1e1611;
+    font-size: 9.3pt;
+    line-height: 1.48;
+    margin: 0;
+  }
+  h1, h2, h3, h4 { font-family: "Constantia", "Georgia", serif; color: #4a2e20; margin: 0 0 8pt; }
+  h1 { font-size: 29pt; line-height: 1.05; }
+  h2 { font-size: 17pt; border-bottom: 2px solid #c99a5b; padding-bottom: 4pt; margin-top: 18pt; }
+  h3 { font-size: 12.5pt; margin-top: 13pt; color: #b4653a; }
+  h4 { font-size: 10.2pt; margin-top: 10pt; color: #8f4a2b; }
+  p { margin: 0 0 7pt; text-align: justify; }
+  ul, ol { margin: 0 0 8pt 16pt; padding: 0; }
+  li { margin-bottom: 3pt; }
+  code, pre { font-family: Consolas, "Courier New", monospace; font-size: 7.9pt; }
+  code { background: #f4e9d8; color: #4a2e20; padding: 0 2px; border-radius: 2px; }
+  pre {
+    background: #1e1611; color: #f4e9d8; padding: 8pt 10pt; border-radius: 4pt;
+    white-space: pre-wrap; overflow-wrap: anywhere; margin: 6pt 0 10pt;
+    line-height: 1.35;
+  }
+  pre code { background: none; color: inherit; padding: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 6pt 0 12pt; font-size: 8pt; }
+  th, td { border: 1px solid #d9be9b; padding: 4pt 5pt; vertical-align: top; text-align: left; }
+  th { background: #4a2e20; color: #f4e9d8; font-weight: 600; }
+  tr:nth-child(even) td { background: #faf5ec; }
+  .portada { text-align: center; padding: 50pt 0 30pt; }
+  .portada h1 { color: #b4653a; font-style: italic; }
+  .portada .sub { font-size: 13pt; color: #8f4a2b; }
+  .portada .meta { margin-top: 35pt; font-size: 9pt; color: #6d5240; }
+  .kicker {
+    font-size: 8pt; text-transform: uppercase; letter-spacing: 2px;
+    color: #b4653a; font-weight: 700; margin-bottom: 3pt;
+  }
+  .nota { background: #f4e9d8; border-left: 4px solid #b4653a; padding: 7pt 10pt; margin: 8pt 0 12pt; }
+  .aviso { background: #fff6e8; border: 1px solid #c99a5b; padding: 7pt 10pt; margin: 8pt 0 12pt; }
+  .exito { background: #eef4e8; border-left: 4px solid #6f8f52; padding: 7pt 10pt; margin: 8pt 0 12pt; }
+  .enfasis { background: #4a2e20; color: #f4e9d8; padding: 9pt 11pt; margin: 10pt 0 14pt; border-radius: 3pt; }
+  .enfasis strong { color: #f4e9d8; }
+  .page-break { page-break-before: always; }
+  .evitar { page-break-inside: avoid; }
+  .indice td:first-child { width: 34pt; color: #b4653a; font-weight: 700; }
+  .ruta { font-family: Consolas, monospace; font-size: 8pt; color: #8f4a2b; font-weight: 700; }
+  .small { font-size: 8pt; color: #6d5240; }
+  .linea { height: 1px; background: #d9be9b; margin: 10pt 0; }
+  footer { margin-top: 24pt; border-top: 1px solid #d9be9b; padding-top: 6pt; font-size: 8pt; color: #6d5240; }
+  .diagrama { border: 1px solid #d9be9b; background: #faf5ec; padding: 8pt; margin: 8pt 0 12pt; }
+  .diagrama .titulo { font-size: 8pt; text-transform: uppercase; letter-spacing: 1px; color: #8f4a2b; margin-bottom: 6pt; }
+  .curva { position: relative; height: 78pt; background: #f4e9d8; border: 1px solid #c99a5b; overflow: hidden; }
+  .curva .log { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; background: #c99a5b; border-top-left-radius: 21rem 55%; }
+  .curva .exp { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; background: #8f4a2b; border-bottom-left-radius: 21rem 60%; }
+  .curva span { position: absolute; font-size: 7pt; color: #4a2e20; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="kicker">Documento técnico · Invitación de boda</p>
+  <h1>Sonia &amp; David</h1>
+  <p class="sub">Cierre de detalles finales</p>
+  <p>Cronograma centrado de verdad, curva logarítmica en Historia, foto exponencial en Vestimenta, fondo gris tenue en Bienvenida, banda y contador con foto, ramas estáticas en SVG y el inventario completo de iconos con instrucciones para reemplazarlos por descargas reales.</p>
+  <p class="meta">Next.js 16.4.5 · React 19.3.0 · Tailwind CSS 4 · TypeScript 5<br>
+  Documento generado el 18 de noviembre de 2026</p>
+</div>
+
+<div class="exito evitar">
+  <strong>Estado:</strong> todo lo descrito aquí está aplicado en el proyecto y verificado con <code>npx tsc --noEmit</code>,
+  <code>npm run lint</code> y mediciones reales en el navegador a 912 px y 1440 px. No hay errores ni advertencias de
+  consola, no hay desbordamiento horizontal y las cinco ramas SVG tienen <code>animation-name: none</code>.
+</div>
+
+<div class="enfasis evitar">
+  <strong>El punto que más importa.</strong> El cronograma no estaba desalineado por el <code>translate</code>, sino porque
+  tu ventana mide menos de 1024 px y las reglas <code>lg:</code> no se aplicaban. La solución definitiva centra el eje,
+  los puntos, el texto y el título sobre la misma línea, sin depender del ancho de la ventana.
+</div>
+
+<div class="aviso evitar">
+  <strong>No sustituye a los PDF anteriores.</strong> Este documento es el cierre de esta ronda. Los anteriores siguen
+  siendo válidos como historia: <code>docs/especificaciones-finales-otono.html</code>,
+  <code>docs/efecto-continuo-bienvenida.html</code> y <code>docs/ajustes-finales-y-efecto-onda.html</code>.
+</div>
+
+<div class="page-break"></div>
+<h2>Índice</h2>
+<table class="indice">
+  <tr><td>1</td><td>El cronograma, por fin centrado (causa real y solución)</td></tr>
+  <tr><td>2</td><td>Nuestra Historia: un poco más de perfil logarítmico</td></tr>
+  <tr><td>3</td><td>Vestimenta: foto exponencial que nace en el pie</td></tr>
+  <tr><td>4</td><td>Bienvenida: fondo gris tenue y fecha centrada</td></tr>
+  <tr><td>5</td><td>La banda y el contador: misma altura, ambos con foto</td></tr>
+  <tr><td>6</td><td>Ramas estáticas dibujadas en SVG</td></tr>
+  <tr><td>7</td><td><strong>Inventario de iconos y cómo poner iconos reales</strong></td></tr>
+  <tr><td>8</td><td>Mapa de archivos tocados</td></tr>
+  <tr><td>9</td><td>Comprobación final y medidas</td></tr>
+  <tr><td>10</td><td>Apéndice: recetas para seguir ajustando</td></tr>
+</table>
+
+<h2>1. El cronograma, por fin centrado</h2>
+
+<h3>1.1 Lo que pasaba</h3>
+<p>La columna derecha de <span class="ruta">ElGranDia.tsx</span> tenía el título con <code>text-center</code>, pero la
+lista llevaba <code>px-9</code> (36 px de relleno a cada lado) y un <code>lg:translate-x-[18px]</code> que solo se activaba
+desde 1024 px. Tu ventana de trabajo mide 1000 px y luego 912 px, así que esa corrección nunca se veía: el título quedaba
+en el centro de la columna y la lista seguía pegada a la izquierda. Medido a 1000 px, el centro del título estaba en
+x≈492 y el texto de la lista empezaba en x≈400.</p>
+
+<div class="nota">
+  <strong>Diagnóstico:</strong> no era un problema de escribir mal una clase de Tailwind, sino de aplicar una regla
+  responsive en el breakpoint equivocado. Por eso añadir más <code>translate</code> no servía: en 1000 px seguía sin ejecutarse.
+</div>
+
+<h3>1.2 Lo que se cambió</h3>
+<ol>
+  <li>Se quitó <code>lg:translate-x-[18px]</code>.</li>
+  <li>El contenedor de la línea pasó a <code>relative mx-auto mt-6 w-fit</code>: con <code>w-fit</code> su ancho lo decide
+      el contenido y <code>mx-auto</code> lo centra dentro de los <code>max-w-[16rem]</code>, en cualquier ancho de ventana.</li>
+  <li>El eje, los puntos y el texto se movieron al centro: <code>left-1/2 -translate-x-1/2</code> para la línea y los puntos,
+      <code>text-center</code> en el <code>&lt;ol&gt;</code> y <code>pt-8</code> en cada <code>&lt;li&gt;</code> para que el
+      punto quede encima del texto.</li>
+</ol>
+
+<p>Código final del bloque derecho (lo que debe quedar en <span class="ruta">components/sections/ElGranDia.tsx</span>):</p>
+<pre><code>&lt;div className="lg:col-span-4"&gt;
+  &lt;div className="mx-auto max-w-[16rem]"&gt;
+    &lt;p className="text-center font-sans text-[11px] uppercase tracking-[0.4em] text-terracotta"&gt;
+      Programa del día
+    &lt;/p&gt;
+
+    &lt;div className="relative mx-auto mt-6 w-fit"&gt;
+      &lt;span aria-hidden="true"
+        className="absolute inset-y-2 left-1/2 w-px -translate-x-1/2 bg-sand/70"/&gt;
+
+      &lt;ol className="space-y-7 text-center"&gt;
+        {schedule.map((item) =&gt; (
+          &lt;li key={item.time} className="relative px-2 pt-8"&gt;
+            &lt;span aria-hidden="true"
+              className="absolute left-1/2 top-0 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-cream bg-terracotta"/&gt;
+            &lt;p className="font-serif text-xl text-coffee"&gt;{item.time}&lt;/p&gt;
+            &lt;h3 className="mt-0.5 font-sans text-[10px] uppercase tracking-[0.2em] text-terracotta"&gt;
+              {item.title}
+            &lt;/h3&gt;
+            {item.description &amp;&amp; (
+              &lt;p className="mt-0.5 font-sans text-xs leading-relaxed text-ink/70"&gt;{item.description}&lt;/p&gt;
+            )}
+          &lt;/li&gt;
+        ))}
+      &lt;/ol&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<h3>1.3 Medidas antes y después</h3>
+<table>
+  <tr><th>Ancho de ventana</th><th>Antes</th><th>Después</th></tr>
+  <tr><td>912 px</td><td>Título c=448 · texto c=433 · bloque c=449</td><td>Título, bloque, punto y hora: todos c=448</td></tr>
+  <tr><td>1440 px</td><td+Título c≈1118 · texto c≈1103</td><td>Título, bloque, punto y hora: todos c=1125</td></tr>
+</table>
+<p class="small">“c” es el centro horizontal calculado sobre el texto real con un <code>Range</code> del DOM, no sobre la caja del elemento.</p>
+
+<div class="page-break"></div>
+<h2>2. Nuestra Historia: un poco más de perfil logarítmico</h2>
+
+<p>Tenías razón: la curva que dibujaba <code>rounded-tl-[18rem_60%]</code> se parece a la rama creciente de una función
+logarítmica: sube con más pendiente al principio y luego se aplana. Para acentuar esa forma sin cambiar la estructura se
+cambiaron solo los dos valores del radio en <span class="ruta">components/sections/NuestraHistoria.tsx</span>:</p>
+
+<table>
+  <tr><th>Versión</th><th>Clase</th><th>Radio horizontal</th><th>Radio vertical</th><th>Efecto</th></tr>
+  <tr><td>Anterior</td><td><code>rounded-tl-[18rem_60%]</code></td><td>288 px</td><td>288 px (60 % de 480)</td><td>Cuarto de círculo equilibrado</td></tr>
+  <tr><td>Actual</td><td><code>rounded-tl-[21rem_55%]</code></td><td>336 px</td><td>264 px (55 % de 480)</td><td>Más horizontal: sube y se aplana antes</td></tr>
+</table>
+
+<p>El valor computado verificado en el navegador es <code>border-top-left-radius: 336px 55%</code>. El borde inferior sigue
+siendo recto y la curva sigue naciendo en la esquina superior izquierda de la foto; solo cambia el perfil. En móvil no se
+tocó nada: la versión <code>lg:hidden</code> conserva <code>rounded-t-full</code>.</p>
+
+<div class="diagrama evitar">
+  <div class="titulo">Comparación visual de las dos curvas</div>
+  <div class="curva"><div class="log"></div><span style="left:6pt;top:6pt">Historia: rounded-tl (sube y se aplana)</span></div>
+  <div class="curva" style="margin-top:6pt"><div class="exp"></div><span style="left:6pt;bottom:6pt">Vestimenta: rounded-bl (nace en el pie y sube)</span></div>
+</div>
+
+<div class="nota">
+  <strong>Cómo leer un radio doble.</strong> En <code>rounded-tl-[X_Y]</code>, la <code>X</code> manda sobre cuánto se abre la
+  curva hacia la derecha y la <code>Y</code> sobre cuánto baja. Si X es mayor que Y, la curva es más tendida (logarítmica);
+  si Y es mayor, es más erguida. El porcentaje se calcula sobre la altura del elemento, no sobre su ancho.
+</div>
+
+<h2>3. Vestimenta: foto exponencial que nace en el pie</h2>
+
+<p>La sección ahora tiene dos columnas solo desde <code>lg</code>. La foto vive en un bloque
+<code>absolute inset-y-0 right-0 w-1/2</code> (712 × 512 px a 1440 px) y se recorta con
+<code>rounded-bl-[21rem_60%]</code>. Al redondear la esquina <em>inferior izquierda</em>, el borde arranca en el pie de la
+sección y sube hasta aplanarse: el perfil de una exponencial vista de lado. El borde superior queda recto, así que la foto
+se integra con el borde de la sección.</p>
+
+<pre><code>{/* Lado derecho, anclado al pie de la sección */}
+&lt;div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block"&gt;
+  &lt;ArcoFoto
+    src={featuredPhotos.dressCode}
+    alt="Traje formal del novio"
+    sizes="(min-width: 1024px) 50vw, 90vw"
+    forma="rounded-bl-[21rem_60%]"
+    className="h-full w-full"
+  /&gt;
+&lt;/div&gt;</code></pre>
+
+<p>La ruta está centralizada en <span class="ruta">data/wedding-data.ts</span>, dentro de <code>featuredPhotos</code>:</p>
+<pre><code>dressCode: "/imagesPrueba/vestimentaNovio.jpeg",</code></pre>
+
+<p>En móvil, donde no hay espacio para dos columnas, la misma foto aparece debajo del texto con una curva más cerrada
+(<code>rounded-bl-[8rem_60%]</code>) y proporción <code>aspect-[4/3]</code>. Medido a 1440 px: foto en x=712…1424,
+y=3311…3823, con <code>border-bottom-left-radius: 336px 60%</code> y el borde inferior exactamente en el mismo y que el
+de la sección (3823).</p>
+
+<h2>4. Bienvenida: fondo gris tenue y fecha centrada</h2>
+
+<h3>4.1 El color</h3>
+<p>El fondo derecho pasó de tinta casi negra a un gris cálido tenue. Se añadió un token en
+<span class="ruta">app/globals.css</span>, dentro de <code>@theme</code>, para que Tailwind genere <code>bg-gris</code> como
+cualquier otro color de la paleta:</p>
+<pre><code>@theme {
+  /* ...los demás colores... */
+  --color-gris: #4a4540;
+}</code></pre>
+
+<p>La capa derecha de Bienvenida quedó con <code>bg-gris</code> y un degradado
+<code>from-gris via-gris/95 to-gris/90</code>. El Hero, a su vez, termina su degradado inferior en
+<code>from-gris</code> (antes <code>from-ink</code>) para que el empalme entre ambas secciones no deje costura. La fecha
+sigue en crema para conservar contraste. Color computado verificado: <code>rgb(74, 69, 64)</code>.</p>
+
+<h3>4.2 La fecha</h3>
+<p><span class="ruta">components/ui/FechaVertical.tsx</span> lleva ahora <code>items-center</code> en el contenedor
+<code>&lt;time&gt;</code>, además del <code>items-center</code> que ya tenía el bloque de día/mes/año. Así el nombre del día
+y los números comparten eje. Medido: a 912 px el centro de la fecha es 448 (centro de la sección) y a 1440 px es 1257
+(centro de su columna derecha de 256 px). En móvil los números ya estaban apilados y centrados.</p>
+
+<div class="page-break"></div>
+<h2>5. La banda y el contador: misma altura, ambos con foto</h2>
+
+<p>La franja fina de 12 px desapareció. Ahora hay una banda con foto de fondo que tiene <strong>exactamente la misma
+altura que la sección del contador</strong>, y el contador también lleva foto de fondo con un velo para que los números
+sigan legibles.</p>
+
+<h3>5.1 Altura compartida</h3>
+<p>En <span class="ruta">app/globals.css</span> se definió una variable CSS y su versión para escritorio:</p>
+<pre><code>:root { --altura-banda: 23rem; }        /* 368 px en móvil y tablet */
+
+@media (min-width: 64rem) {
+  :root { --altura-banda: 16.5rem; }     /* 264 px desde 1024 px */
+}</code></pre>
+
+<p>Ambos elementos usan <code>h-[var(--altura-banda)]</code>. Verificado: a 912 px los dos miden 368 px y a 1440 px los
+dos miden 264 px.</p>
+
+<h3>5.2 Fotos centralizadas</h3>
+<pre><code>banda: "/imagesPrueba/gale6.jpg",
+countdown: "/imagesPrueba/gale3.jpg",</code></pre>
+
+<p>Estas dos claves viven junto a <code>hero</code> y <code>welcome</code> en <code>featuredPhotos</code>, dentro de
+<span class="ruta">data/wedding-data.ts</span>. Al pasar a fotos definitivas solo se cambian ahí.</p>
+
+<h3>5.3 Código de la banda</h3>
+<p>En <span class="ruta">app/page.tsx</span>, entre Bienvenida e Historia:</p>
+<pre><code>&lt;div aria-hidden="true" className="relative h-[var(--altura-banda)] overflow-hidden bg-coffee"&gt;
+  &lt;div className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: `url('${featuredPhotos.banda}')` }}/&gt;
+  &lt;div className="absolute inset-0 bg-coffee/55"/&gt;
+&lt;/div&gt;</code></pre>
+
+<h3>5.4 Código del contador</h3>
+<p>En <span class="ruta">components/sections/CuentaRegresiva.tsx</span>, la sección pasó a ser un contenedor flex con la
+misma altura; la foto va en <code>-z-20</code> y el velo en <code>-z-10</code>, ambos detrás del contenido:</p>
+<pre><code>&lt;section id="countdown"
+  className="relative isolate flex h-[var(--altura-banda)] items-center scroll-mt-24 overflow-hidden bg-coffee py-16 lg:py-20"&gt;
+  &lt;div aria-hidden="true" className="absolute inset-0 -z-20 bg-cover bg-center"
+    style={{ backgroundImage: `url('${featuredPhotos.countdown}')` }}/&gt;
+  &lt;div aria-hidden="true" className="absolute inset-0 -z-10 bg-coffee/85"/&gt;
+  {/* ...el grid de dos columnas de siempre... */}
+&lt;/section&gt;</code></pre>
+
+<div class="nota">
+  <strong>¿Por qué <code>isolate</code>?</strong> Crea un contexto de apilamiento propio. Así los valores negativos de
+  <code>z-index</code> se quedan detrás del texto de esta sección pero no se escapan por debajo del resto de la página.
+</div>
+
+<h2>6. Ramas estáticas dibujadas en SVG</h2>
+
+<p>Sí es posible y ya está hecho. Se creó <span class="ruta">components/ui/Ramas.tsx</span>: un componente de servidor
+(sin <code>"use client"</code>) que devuelve un SVG con seis tallos y diez hojas dibujadas con rutas. No usa archivos de
+imagen, no carga nada extra y <strong>no tiene animación</strong>: las cinco instancias devuelven
+<code>animation-name: none</code>.</p>
+
+<pre><code>type Props = {
+  className?: string;
+  volteada?: boolean;   // gira 180° para abrazar desde la otra esquina
+};
+
+export default function Ramas({ className = "", volteada = false }: Props) {
+  return (
+    &lt;svg aria-hidden="true" viewBox="0 0 400 400" fill="none"
+      preserveAspectRatio="xMidYMid meet"
+      className={`pointer-events-none ${volteada ? "rotate-180" : ""} ${className}`}&gt;
+      {/* tallos con stroke="currentColor" y hojas con fill="currentColor" */}
+    &lt;/svg&gt;
+  );
+}</code></pre>
+
+<p>El color se hereda con <code>currentColor</code>, así que se controla desde la sección que lo usa. Están en:</p>
+<table>
+  <tr><th>Sección</th><th>Uso</th><th>Color</th></tr>
+  <tr><td>Bienvenida</td><td>Dos ramas: esquina superior izquierda del texto y esquina inferior derecha</td><td><code>text-terracotta/20</code> y <code>text-sand/25</code></td></tr>
+  <tr><td>Nuestra Historia</td><td>Dos ramas en los márgenes del bloque de texto</td><td><code>text-terracotta/15</code> y <code>text-sand/25</code></td></tr>
+  <tr><td>Vestimenta</td><td>Una rama en el margen izquierdo del texto</td><td><code>text-terracotta/15</code></td></tr>
+</table>
+
+<p>Todas llevan <code>aria-hidden="true"</code> y <code>pointer-events-none</code>, por lo que el lector de pantalla las
+ignora y no bloquean clics. Las secciones tienen <code>overflow-hidden</code>, así que la parte que sale del borde se recorta
+sin provocar scroll. Para cambiar el tamaño se ajustan las clases <code>h-*</code> y <code>w-*</code> donde se invocan; para
+quitarlas, basta con borrar las etiquetas <code>&lt;Ramas ... /&gt;</code> y sus imports.</p>
+
+<div class="page-break"></div>
+<h2>7. Inventario de iconos y cómo poner iconos reales</h2>
+
+<h3>7.1 De dónde salen los que hay ahora</h3>
+<p>No vienen de una clase de Tailwind ni de un generador de imágenes. Los que son vectores los dibujé a mano como SVG
+inline dentro de los propios componentes, con trazo <code>currentColor</code> y <code>strokeWidth={1.5}</code> para que
+hereden el color del tema. Los dos archivos PNG sí son archivos reales guardados en <code>public/icons/</code>.</p>
+
+<table>
+  <tr><th>Dónde</th><th>Qué se ve</th><th>Cómo está hecho</th><th>Se puede reemplazar</th></tr>
+  <tr><td><span class="ruta">ElGranDia.tsx</span></td><td>Calendario</td><td>SVG inline: función <code>IconoCalendario</code> (rect + líneas)</td><td>Sí</td></tr>
+  <tr><td><span class="ruta">ElGranDia.tsx</span></td><td>Reloj</td><td>SVG inline: función <code>IconoReloj</code> (círculo + agujas)</td><td>Sí</td></tr>
+  <tr><td><span class="ruta">ElGranDia.tsx</span></td><td>Ubicación</td><td>SVG inline: función <code>IconoUbicacion</code> (pin + círculo)</td><td>Sí</td></tr>
+  <tr><td><span class="ruta">ElGranDia.tsx</span></td><td>Flecha de “Cómo llegar”</td><td>SVG inline dentro del enlace, <code>M7 17L17 7M17 7H9M17 7v8</code></td><td>Sí</td></tr>
+  <tr><td><span class="ruta">Galeria.tsx</span></td><td>Flecha del botón circular “Ver más fotos”</td><td>SVG inline, <code>&lt;path d="M9 5l7 7-7 7" /&gt;</code></td><td>Sí</td></tr>
+  <tr><td><span class="ruta">Header.tsx</span></td><td>Hamburguesa / X del menú móvil</td><td>SVG inline que cambia de <code>path</code> según <code>isMenuOpen</code></td><td>Sí</td></tr>
+  <tr><td><span class="ruta">HistoriaModal.tsx</span></td><td>La X del modal</td><td><strong>No es icono:</strong> es el carácter de texto <code>&amp;times;</code></td><td>Sí</td></tr>
+  <tr><td><span class="ruta">HistoriaModal.tsx</span></td><td>Flecha del botón “Conoce nuestra historia”</td><td>Archivo PNG real: <code>/icons/derecha.png</code> con <code>next/image</code></td><td>Ya es real</td></tr>
+  <tr><td><span class="ruta">Lightbox.tsx</span></td><td>Botón “Cerrar”</td><td>Solo texto, sin icono</td><td>Se puede añadir</td></tr>
+  <tr><td><span class="ruta">public/icons/</span></td><td><code>derecha.png</code> y <code>anadir.png</code></td><td>Archivos PNG reales. <code>anadir.png</code> quedó sin uso al quitar las preguntas frecuentes</td><td>Ya son reales</td></tr>
+</table>
+
+<h3>7.2 Cómo descargar iconos reales</h3>
+<ol>
+  <li><strong>Elige una fuente con licencia clara:</strong> Lucide (<code>lucide.dev</code>, licencia ISC), Heroicons
+      (<code>heroicons.com</code>, MIT) o Font Awesome Free (<code>fontawesome.com/icons</code>; algunos requieren atribución).</li>
+  <li><strong>Busca estos nombres:</strong> <code>calendar-days</code>, <code>clock</code>, <code>map-pin</code>,
+      <code>arrow-up-right</code>, <code>chevron-right</code>, <code>menu</code>, <code>x</code>.</li>
+  <li><strong>Descarga el SVG</strong> o pulsa “Copy SVG”. También puedes bajar el PNG si prefieres archivos.</li>
+  <li><strong>Decide dónde vivirá:</strong> pegado en el componente (recomendado, hereda el color) o guardado en
+      <code>public/icons/</code> (recomendado solo si quieres editar el archivo sin tocar código).</li>
+</ol>
+
+<h4>Opción A: pegar el SVG en el componente</h4>
+<p>Reemplaza, por ejemplo, la función <code>IconoCalendario</code> de <span class="ruta">ElGranDia.tsx</span> por el SVG
+descargado, manteniendo la prop <code>className</code>:</p>
+<pre><code>function IconoCalendario({ className }: IconoProps) {
+  return (
+    &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"
+      className={className} aria-hidden="true"&gt;
+      &lt;path d="M8 2v4M16 2v4" /&gt;
+      &lt;rect width="18" height="18" x="3" y="4" rx="2" /&gt;
+      &lt;path d="M3 10h18" /&gt;
+    &lt;/svg&gt;
+  );
+}</code></pre>
+<p>El resto del componente no se toca: el array <code>datos</code> sigue pasando <code>Icono</code> y la lista lo renderiza
+con <code>&lt;Icono className="h-5 w-5"/&gt;</code>. Ventaja: el icono adopta el color <code>text-cinnamon</code> del
+contenedor y no añade peticiones de red.</p>
+
+<h4>Opción B: archivo en <code>public/icons/</code></h4>
+<p>Guarda, por ejemplo, <code>calendario.svg</code> en <code>public/icons/</code> y usa <code>next/image</code> como ya se
+hace con la flecha de Historia:</p>
+<pre><code>import Image from "next/image";
+
+&lt;Image src="/icons/calendario.svg" alt="" width={20} height={20}
+  className="h-5 w-5 object-contain"/&gt;</code></pre>
+<p>Para un SVG que deba cambiar de color con el tema, mejor la Opción A: un archivo externo no hereda
+<code>currentColor</code> cuando se carga con <code>&lt;img&gt;</code>.</p>
+
+<h4>La X del modal y el botón Cerrar</h4>
+<p>En <span class="ruta">HistoriaModal.tsx</span>, sustituye el carácter por un icono descargado:</p>
+<pre><code>&lt;Image src="/icons/cerrar.svg" alt="" width={18} height={18}
+  className="h-4 w-4 object-contain"/&gt;</code></pre>
+<p>En <span class="ruta">Lightbox.tsx</span>, añade el mismo icono antes de la palabra “Cerrar” dentro del
+<code>&lt;button&gt;</code>; el texto se conserva para que el botón siga siendo comprensible.</p>
+
+<div class="aviso">
+  <strong>Consejo de coherencia:</strong> descarga los siete iconos de la <em>misma</em> familia y con el mismo grosor de
+  trazo (1.5 o 1.75). Mezclar rellenos con líneas, o grosores distintos, se nota enseguida aunque cada icono sea correcto.
+</div>
+
+<div class="page-break"></div>
+<h2>8. Mapa de archivos tocados</h2>
+<table>
+  <tr><th>Archivo</th><th>Cambio</th></tr>
+  <tr><td><span class="ruta">app/globals.css</span></td><td>Token <code>--color-gris</code> y variable <code>--altura-banda</code> con su media query.</td></tr>
+  <tr><td><span class="ruta">app/page.tsx</span></td><td>La franja de 12 px se sustituye por la banda con foto y altura compartida.</td></tr>
+  <tr><td><span class="ruta">data/wedding-data.ts</span></td><td>Nuevas claves en <code>featuredPhotos</code>: <code>banda</code>, <code>countdown</code> y <code>dressCode</code>.</td></tr>
+  <tr><td><span class="ruta">components/sections/ElGranDia.tsx</span></td><td>Cronograma con eje, puntos y texto centrados; se elimina el <code>lg:translate-x</code>.</td></tr>
+  <tr><td><span class="ruta">components/sections/Hero.tsx</span></td><td>El degradado inferior termina en <code>from-gris</code>.</td></tr>
+  <tr><td><span class="ruta">components/sections/Bienvenida.tsx</span></td><td>Capa derecha gris, dos ramas SVG.</td></tr>
+  <tr><td><span class="ruta">components/ui/FechaVertical.tsx</span></td><td><code>items-center</code> en el contenedor principal.</td></tr>
+  <tr><td><span class="ruta">components/sections/NuestraHistoria.tsx</span></td><td>Curva <code>21rem 55%</code> y dos ramas SVG.</td></tr>
+  <tr><td><span class="ruta">components/sections/CodigoVestimenta.tsx</span></td><td>Dos columnas, foto exponencial al pie, foto en móvil y una rama SVG.</td></tr>
+  <tr><td><span class="ruta">components/sections/CuentaRegresiva.tsx</span></td><td>Altura compartida, foto de fondo y velo.</td></tr>
+  <tr><td><span class="ruta">components/ui/Ramas.tsx</span></td><td>Componente nuevo: SVG estático reutilizable.</td></tr>
+</table>
+
+<h2>9. Comprobación final</h2>
+<table>
+  <tr><th>Prueba</th><th>Resultado</th></tr>
+  <tr><td><code>npx tsc --noEmit</code></td><td>Sin errores</td></tr>
+  <tr><td><code>npm run lint</code></td><td>Sin errores ni advertencias</td></tr>
+  <tr><td>Cronograma a 912 px y 1440 px</td><td>Título, bloque, punto y texto en el mismo centro</td></tr>
+  <tr><td>Curva de Historia</td><td><code>336px 55%</code> computados</td></tr>
+  <tr><td>Foto de Vestimenta a 1440 px</td><td>712 × 512, anclada al pie, radio <code>336px 60%</code></td></tr>
+  <tr><td>Color de Bienvenida</td><td><code>rgb(74, 69, 64)</code></td></tr>
+  <tr><td>Fecha</td><td>Centrada en su columna; mismo eje en día, mes y año</td></tr>
+  <tr><td>Banda y contador</td><td>368 px a 912 y 264 px a 1440, idénticos; ambos con imagen de fondo</td></tr>
+  <tr><td>Ramas</td><td>5 SVG, <code>animation-name: none</code></td></tr>
+  <tr><td>Consola y scroll horizontal</td><td>Sin errores; <code>scrollWidth</code> igual al ancho visible</td></tr>
+</table>
+
+<h2>10. Apéndice: recetas para seguir ajustando</h2>
+
+<h3>Cambiar la foto de Vestimenta</h3>
+<p>Reemplaza el archivo <code>public/imagesPrueba/vestimentaNovio.jpeg</code> por el definitivo o cambia la ruta en
+<code>featuredPhotos.dressCode</code>. Si el nombre cambia, recuerda actualizar también el <code>alt</code> en
+<span class="ruta">CodigoVestimenta.tsx</span> para que describa la imagen nueva.</p>
+
+<h3>Hacer la curva de Historia más o menos pronunciada</h3>
+<p>En <code>rounded-tl-[21rem_55%]</code>: sube el <code>21rem</code> para abrirla más hacia la derecha; sube el
+<code>55%</code> para que arranque más abajo. Mantén el prefijo <code>lg:</code> intacto para no afectar al móvil.</p>
+
+<h3>Subir o bajar la foto exponencial</h3>
+<p>En Vestimenta, el tamaño de la sección se controla con <code>lg:h-[32rem]</code>. Si la haces más alta, el radio vertical
+(de <code>60%</code>) crece con ella. Para que la curva no se coma demasiada foto, baja ese porcentaje.</p>
+
+<h3>Cambiar el gris</h3>
+<p>Edita <code>--color-gris</code> en <span class="ruta">app/globals.css</span>. Como es un token de Tailwind, el cambio se
+propaga solo a <code>bg-gris</code> y a los degradados <code>from-gris</code> de Bienvenida y Hero. No hace falta tocar los
+componentes. Si el gris se vuelve muy claro, sube el tono del texto de la fecha para mantener contraste.</p>
+
+<h3>Volver a la franja fina</h3>
+<p>Sustituye el bloque de la banda en <span class="ruta">app/page.tsx</span> por
+<code>&lt;div aria-hidden="true" className="h-3 bg-terracotta"/&gt;</code>. El contador conservará su foto y su altura sin
+problemas.</p>
+
+<h3>Trampas que conviene recordar</h3>
+<ul>
+  <li>Tailwind falla en silencio: si el token está mal escrito (<code>bg-griss</code>), no genera CSS y no avisa.</li>
+  <li>Las clases van separadas por espacios: <code>px-8py-10</code> es una sola clase inválida.</li>
+  <li>Un porcentaje en <code>rounded-*</code> se mide sobre la altura cuando es el segundo valor, no sobre el ancho.</li>
+  <li>En anclas, sin acento: <code>#galeria</code>, nunca <code>#galería</code>.</li>
+  <li>Si se usa <code>next/image</code> con <code>fill</code>, el padre debe tener posición y altura definidas.</li>
+</ul>
+
+<footer>
+  Cierre de detalles finales · Invitación de boda de Sonia &amp; David · Next.js 16 / Tailwind 4 · 18 de noviembre de 2026.
+  Este documento describe el estado real del código en la fecha indicada.
+</footer>
+
+</body>
+</html>

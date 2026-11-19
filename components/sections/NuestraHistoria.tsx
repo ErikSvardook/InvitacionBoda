@@ -1,5 +1,6 @@
 import ArcoFoto from "@/components/ui/ArcoFoto";
 import HistoriaModal from "@/components/ui/HistoriaModal";
+import Ramas from "@/components/ui/Ramas";
 import { history, historyPhotos } from "@/data/wedding-data";
 
 export default function NuestraHistoria(){
@@ -7,6 +8,10 @@ export default function NuestraHistoria(){
 
     return (
         <section id="historia" className="relative scroll-mt-24 overflow-hidden bg-cream pb-0 pt-12 lg:h-[30rem] lg:pt-0">
+            {/*Ramas estáticas, dibujadas en SVG: solo adornan los márgenes del texto*/}
+            <Ramas className="absolute -left-16 top-6 hidden h-96 w-96 text-terracotta/15 lg:block"/>
+            <Ramas volteada className="absolute -bottom-10 left-1/4 hidden h-72 w-72 text-sand/25 lg:block"/>
+
             {/*Texto arriba: el botón queda lejos del borde inferior de la sección*/}
             <div className="relative z-10 grid items-start gap-10 lg:h-full lg:grid-cols-2 lg:gap-0">
                 <div className="px-6 lg:pl-20 lg:pr-12 lg:pt-12">
@@ -42,16 +47,16 @@ export default function NuestraHistoria(){
 
             {/*
               En escritorio la foto ocupa todo el alto de la sección. El radio horizontal
-              (18rem = 288 px) lleva la curva más a la derecha y el vertical (60 % = 288 px)
-              la hace arrancar más abajo: se mantiene el cuarto de círculo equilibrado,
-              con el borde recto por debajo.
+              (21rem = 336 px) es más largo que el vertical (55 % de 480 px = 264 px), así que
+              la curva sube deprisa y se aplana: el perfil recuerda a una función logarítmica.
+              Sigue siendo un cuarto de curva con el borde recto por debajo.
             */}
             <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
                 <ArcoFoto
                     src={foto.src}
                     alt={foto.alt}
                     sizes="(min-width: 1024px) 50vw, 90vw"
-                    forma="rounded-tl-[18rem_60%]"
+                    forma="rounded-tl-[21rem_55%]"
                     className="h-full w-full"
                 />
             </div>

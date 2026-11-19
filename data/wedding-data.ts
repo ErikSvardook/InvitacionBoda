@@ -1,6 +1,5 @@
 //Fuente única de verdad de la boda
 //Si un dato cambia(fecha, lugar, link) se cambia solo aquí
-
 export type Venue = { 
     name: string;
     address: string;
@@ -77,12 +76,6 @@ export const ceremony: Venue = {
     imageAlt: "Foto de prueba del lugar de la ceremonia",
 };
 
-export const reception: Venue = {
-    name: "Centro Cristiano Izcalli",
-    address,
-    time: "8:00 PM",
-    mapsUrl,
-};
 
 //Cronograma: los momentos del día, en orden
 export type ScheduleItem = {
@@ -95,7 +88,7 @@ export const schedule: ScheduleItem[] = [
     { time: "5:00 PM", title: "Ceremonia"},
     { time: "6:30 PM", title: "Recepción"},
     { time: "7:00 PM", title: "Cena"},
-    { time: "9:00 PM", title: "Convivencia"},
+    { time: "8:30 PM", title: "Convivencia"},
 ];
 
 export const dressCode = {
@@ -113,41 +106,6 @@ export const dressCode = {
     },
 } as const;
 
-//Lugares para quedarse
-export type Hotel = {
-    name: string;
-    note: string;
-    url: string | null;
-    image?: string;
-    imageAlt?: string;
-}
-
-export const hotels: Hotel[] = [
-    //Agregar los hoteles recomendados
-    //{ name: "Hotel ejemplo", note: "A 10 minutos del evento", url: "https://..." }
-    { 
-        name: "Hotel campanario", 
-        note: "A 10 minutos del evento", 
-        url: "https://www.google.com/search?q=hoteles+en+miahuatlan&sca_esv=f0ad64fcc536899c&rlz=1C1GCEA_enMX1150MX1150&sxsrf=AKL5yDj-p0a18evDDxw8qb_gM_4WxICLxg%3A1794498025679&ei=6d31at76KNDukPIPvtDlwQM&biw=1366&bih=599&llpgabe=CgovbS8wNjYwZzFu&oq=hoteles+&gs_lp=Egxnd3Mtd2l6LXNlcnAiCGhvdGVsZXMgKgsIABiABBiKBRiSAzILEAAYgAQYigUYkgMyDhAAGIAEGLEDGIMBGJIDMg0QABiABBiKBRhDGMkDMhAQABiABBiKBRhDGLEDGIMBMgoQABiABBiKBRhDMhAQABiABBiKBRhDGLEDGIMBMhAQABiABBiKBRhDGLEDGIMBMgoQABiABBiKBRhDMgoQABiABBiKBRhDMgoQABiABBiKBRhDSIIXUKwHWKwHcAF4AZABAJgB0gKgAdICqgEDMy0xuAEDyAEA-AEBmAICoAL2AsICChAAGEcY1gQYsAPCAg0QABhHGNYEGMkDGLADwgIOEAAYgAQYigUYkgMYsAPCAg4QABiABBjnBBiSAxiwA8ICDRAAGIAEGIoFGEMYsAPCAg4QABjkAhjWBBiwA9gBAcICFxAuGNwGGLgGGNoGGNgCGMgDGLAD2AEBmAMAiAYBkAYTugYGCAEQARgJkgcFMS4zLTGgB_gFsgcDMy0xuAfeAsIHBTMtMS4xyAcbgAgB&sclient=gws-wiz-serp",
-        image: "/imagesPrueba/hotel1.jpg",
-        imageAlt: "Hotel 5 sstrellas cerca del mar",
-     },
-     { 
-        name: "Hotel vasilica", 
-        note: "A 10 minutos del evento", 
-        url: "https://www.google.com/search?q=hoteles+en+miahuatlan&sca_esv=f0ad64fcc536899c&rlz=1C1GCEA_enMX1150MX1150&sxsrf=AKL5yDj-p0a18evDDxw8qb_gM_4WxICLxg%3A1794498025679&ei=6d31at76KNDukPIPvtDlwQM&biw=1366&bih=599&llpgabe=CgovbS8wNjYwZzFu&oq=hoteles+&gs_lp=Egxnd3Mtd2l6LXNlcnAiCGhvdGVsZXMgKgsIABiABBiKBRiSAzILEAAYgAQYigUYkgMyDhAAGIAEGLEDGIMBGJIDMg0QABiABBiKBRhDGMkDMhAQABiABBiKBRhDGLEDGIMBMgoQABiABBiKBRhDMhAQABiABBiKBRhDGLEDGIMBMhAQABiABBiKBRhDGLEDGIMBMgoQABiABBiKBRhDMgoQABiABBiKBRhDMgoQABiABBiKBRhDSIIXUKwHWKwHcAF4AZABAJgB0gKgAdICqgEDMy0xuAEDyAEA-AEBmAICoAL2AsICChAAGEcY1gQYsAPCAg0QABhHGNYEGMkDGLADwgIOEAAYgAQYigUYkgMYsAPCAg4QABiABBjnBBiSAxiwA8ICDRAAGIAEGIoFGEMYsAPCAg4QABjkAhjWBBiwA9gBAcICFxAuGNwGGLgGGNoGGNgCGMgDGLAD2AEBmAMAiAYBkAYTugYGCAEQARgJkgcFMS4zLTGgB_gFsgcDMy0xuAfeAsIHBTMtMS4xyAcbgAgB&sclient=gws-wiz-serp",
-        image: "/imagesPrueba/hotel2.jpg",
-        imageAlt: "Hotel 5 sstrellas cerca del centro de ceremonia",
-     },
-     { 
-        name: "Hotel beach", 
-        note: "A 10 minutos del evento", 
-        url: "https://www.google.com/search?q=hoteles+en+miahuatlan&sca_esv=f0ad64fcc536899c&rlz=1C1GCEA_enMX1150MX1150&sxsrf=AKL5yDj-p0a18evDDxw8qb_gM_4WxICLxg%3A1794498025679&ei=6d31at76KNDukPIPvtDlwQM&biw=1366&bih=599&llpgabe=CgovbS8wNjYwZzFu&oq=hoteles+&gs_lp=Egxnd3Mtd2l6LXNlcnAiCGhvdGVsZXMgKgsIABiABBiKBRiSAzILEAAYgAQYigUYkgMyDhAAGIAEGLEDGIMBGJIDMg0QABiABBiKBRhDGMkDMhAQABiABBiKBRhDGLEDGIMBMgoQABiABBiKBRhDMhAQABiABBiKBRhDGLEDGIMBMhAQABiABBiKBRhDGLEDGIMBMgoQABiABBiKBRhDMgoQABiABBiKBRhDMgoQABiABBiKBRhDSIIXUKwHWKwHcAF4AZABAJgB0gKgAdICqgEDMy0xuAEDyAEA-AEBmAICoAL2AsICChAAGEcY1gQYsAPCAg0QABhHGNYEGMkDGLADwgIOEAAYgAQYigUYkgMYsAPCAg4QABiABBjnBBiSAxiwA8ICDRAAGIAEGIoFGEMYsAPCAg4QABjkAhjWBBiwA9gBAcICFxAuGNwGGLgGGNoGGNgCGMgDGLAD2AEBmAMAiAYBkAYTugYGCAEQARgJkgcFMS4zLTGgB_gFsgcDMy0xuAfeAsIHBTMtMS4xyAcbgAgB&sclient=gws-wiz-serp",
-        image: "/imagesPrueba/hotel3.jpg",
-        imageAlt: "Hotel 5 sstrellas",
-     },
-];
-
 //Galería
 export type GalleryPhoto = {
     src: string;
@@ -159,8 +117,7 @@ export type GalleryPhoto = {
 };
 
 export const galleryPhotos: GalleryPhoto[] = [
-    //Las fotos se guardan en public/images/ y se agrega así:
-    //{ src: "/images/galeria-01.jpg", alt: "Sonia y David en la playa"}
+    //Las fotos se guardan en public/images/
     {src: "/imagesPrueba/gale1.jpg", alt: "Sonia y David", caption: "Nuestro primer viaje juntos.", size: "grande"},
     {src: "/imagesPrueba/gale2.jpg", alt: "Sonia y David", caption: "Una tarde de café y conversación.", size: "alto"},
     {src: "/imagesPrueba/gale3.jpg", alt: "Sonia y David", caption: "Celebrando en familia.", size: "normal"},
@@ -174,6 +131,11 @@ export const galleryPhotos: GalleryPhoto[] = [
 export const featuredPhotos = {
     hero: "/imagesPrueba/hero.jpg",
     welcome: "/imagesPrueba/gale2.jpg",
+    //Fondo de la banda entre Bienvenida e Historia, y del contador
+    banda: "/imagesPrueba/casados.jpg",
+    countdown: "/imagesPrueba/casados.jpg",
+    //Foto del lado derecho de Vestimenta (forma exponencial)
+    dressCode: "/imagesPrueba/vestidoNovia.png",
 }
 
 //Carrusel de historia: cada foto con su descripción
@@ -193,32 +155,6 @@ export const historyPhotos: HistoryPhoto[] = [
         src: "/imagesPrueba/historia2.png",
         alt: "Sonia y David en el parque",
         caption: "El parque donde caminamos tantas tardes.",
-    },
-];
-
-//Preguntas frecuentes
-export type FaqItem = {
-    question: string;
-    answer: string;
-};
-
-export const faqItems: FaqItem[] = [
-    {
-        question: "¿A qué hora debo llegar?",
-        answer: "La ceremonia comienza a las 5:00 PM. Te recomendamos llegar entre 4:30 o 4:45 PM para acomodarte sin prisa y no perderte el inicio.",
-    },
-    {
-        question: "¿Qué pasa si tengo alguna restricción alimenticia?",
-        answer: "Cuéntanoslo al confirmar tu asistencia. Avisaremos a quien prepara el banquete para que tengas una opción que puedas disfrutar.",
-    },
-    {
-        question: "¿Hasta cuándo puedo confirmar mi asistencia?",
-        //Ajustar esta fecha cuando definan el límite real del RSVP
-        answer: "Hasta el 1 de diciembre de 2026. Después de esa fecha ya no podremos asegurar tu lugar, así que te pedimos no dejarlo para el final.",
-    },
-    {
-        question: "¿Cómo llego al lugar?",
-        answer: "En la sección \"El gran día\" está el botón \"Cómo llegar\", que abre la ubicación exacta en Google Maps. La ceremonia y la recepción son en el mismo lugar.",
     },
 ];
 

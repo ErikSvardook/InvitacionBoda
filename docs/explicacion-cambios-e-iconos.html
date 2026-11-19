@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Cambios confirmados y cómo se hicieron los iconos</title>
+<style>
+    @page { size: A4; margin: 16mm 15mm 18mm; }
+    * { box-sizing: border-box; }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10.2pt;
+        line-height: 1.5;
+        color: #1A1817;
+        margin: 0;
+    }
+    h1, h2, h3, h4 {
+        font-family: Georgia, "Times New Roman", serif;
+        color: #5C3A21;
+        margin: 0 0 8px;
+        line-height: 1.15;
+    }
+    h1 { font-size: 27pt; font-style: italic; }
+    h2 { font-size: 17pt; border-bottom: 1px solid #D8BFA8; padding-bottom: 5px; margin-top: 4px; }
+    h3 { font-size: 12.5pt; margin-top: 14px; }
+    h4 { font-size: 10.5pt; margin-top: 10px; }
+    p { margin: 5px 0 9px; }
+    ul, ol { margin: 5px 0 10px; padding-left: 20px; }
+    li { margin: 3px 0; }
+    code { font-family: Consolas, "Courier New", monospace; font-size: 9pt; background: #F3EBE1; padding: 0 3px; border-radius: 3px; }
+    pre {
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 8.2pt;
+        line-height: 1.35;
+        background: #F3EBE1;
+        border-left: 3px solid #C08D52;
+        padding: 8px 10px;
+        margin: 7px 0 12px;
+        white-space: pre-wrap;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 8.8pt; margin: 8px 0 14px; }
+    th { background: #5C3A21; color: #F3EBE1; text-align: left; padding: 6px 7px; font-weight: normal; }
+    td { border-bottom: 1px solid #D8BFA8; padding: 5px 7px; vertical-align: top; }
+    tr { break-inside: avoid; page-break-inside: avoid; }
+    .cover {
+        height: 245mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        page-break-after: always;
+        border-top: 10px solid #C08D52;
+        padding-top: 14mm;
+    }
+    .cover .kicker { font-size: 9pt; letter-spacing: .35em; text-transform: uppercase; color: #C08D52; }
+    .cover .sub { font-family: Georgia, serif; font-size: 14pt; font-style: italic; color: #A66443; margin-top: 10px; }
+    .cover .meta { margin-top: 26mm; font-size: 9.5pt; color: #5C3A21; }
+    .cover .meta span { color: #1A1817; }
+    .block { break-inside: avoid; page-break-inside: avoid; }
+    .card {
+        background: #F3EBE1;
+        border-left: 4px solid #C08D52;
+        padding: 9px 12px;
+        margin: 9px 0 14px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    .num {
+        display: inline-block;
+        width: 22px; height: 22px;
+        line-height: 22px;
+        text-align: center;
+        border-radius: 50%;
+        background: #C08D52;
+        color: #fff;
+        font-size: 9pt;
+        margin-right: 6px;
+    }
+    .page { page-break-before: always; }
+    .tag { font-size: 8pt; text-transform: uppercase; letter-spacing: .12em; color: #A66443; }
+    .note { font-size: 9pt; color: #5C3A21; }
+    .yes { color: #5C6B5D; font-weight: bold; }
+    .no { color: #A66443; font-weight: bold; }
+    .center { text-align: center; }
+    .small { font-size: 8.8pt; }
+</style>
+</head>
+<body>
+
+<header class="cover">
+    <div class="kicker">Invitación de boda · Sonia &amp; David</div>
+    <h1>Cambios confirmados<br/>y cómo se hicieron los iconos</h1>
+    <div class="sub">Del centramiento del cronograma al cierre de Vestimenta</div>
+    <div class="meta">
+        <p><span>Documento:</span> explicación técnica y cronológica</p>
+        <p><span>Fecha:</span> 18 de noviembre de 2026</p>
+        <p><span>Fuentes:</span> bitácora de <code>AGENTS.md</code> y código fuente del proyecto</p>
+        <p><span>Estado:</span> cambios aplicados, verificados y confirmados</p>
+    </div>
+</header>
+
+<main>
+
+<section>
+    <h2>Resumen ejecutivo</h2>
+    <p>Desde que pediste mover el cronograma al centro hasta la última ronda de Vestimenta se confirmaron <strong>siete actuaciones</strong>. Todas quedaron registradas en la bitácora y se verificaron con <code>npx tsc --noEmit</code>, <code>npm run lint</code> y revisión en el navegador a 1000, 1024 y 1440 px, sin desbordamiento horizontal ni errores de consola.</p>
+
+    <div class="card">
+        <p><strong>Respuesta corta a tu pregunta sobre los «logos»:</strong> casi ninguno es una imagen pegada. Son <strong>iconos SVG dibujados en el código</strong> y coloreados con clases de Tailwind (CSS). Hay dos excepciones: la <strong>X del modal</strong> es un carácter de texto (<code>&amp;times;</code>) y la <strong>flecha del botón de Historia</strong> sí es un PNG real (<code>public/icons/derecha.png</code>). No he usado pseudo-elementos <code>::before</code> ni <code>::after</code> para dibujar iconos.</p>
+    </div>
+
+    <h3>Índice</h3>
+    <ol>
+        <li>Parte 1 — cronología de los cambios confirmados.</li>
+        <li>Parte 2 — qué son realmente los iconos y cómo se dibujan.</li>
+        <li>Parte 3 — cómo sustituirlos por imágenes reales si algún día lo prefieres.</li>
+        <li>Apéndice — inventario de archivos y comprobaciones.</li>
+    </ol>
+</section>
+
+<section class="page">
+    <h2>Parte 1 · Cronología de cambios confirmados</h2>
+    <p class="note">Punto de partida: pediste que el «Programa del día» quedara centrado de verdad dentro de su columna. Antes de eso, al revisar <code>data/wedding-data.ts</code> se confirmó que <code>reception</code> era correcto (Centro Cristiano Izcalli, misma dirección, 8:00 PM y el mismo enlace de Maps) y se restauraron los seis hitos del cronograma, con <code>description</code> obligatoria en el tipo <code>ScheduleItem</code>.</p>
+
+    <div class="block">
+        <h3><span class="num">1</span>El cronograma vuelve a verse</h3>
+        <p>La línea vertical estaba fuera de pantalla por un typo: <code>left-[-177px]</code> (un 7 de más). Se sustituyó por <code>left-[7px]</code>, se añadió <code>pl-6 pr-6</code> al contenedor, <code>text-center</code> al <code>&lt;ol&gt;</code> y el punto pasó a <code>-left-6</code>.</p>
+        <pre>&lt;span aria-hidden="true"
+    className="absolute inset-y-2 left-[7px] w-px -translate-x-1/2 bg-sand/70"/&gt;
+
+&lt;ol className="space-y-6 text-center"&gt;
+    &lt;li className="relative"&gt;
+        &lt;span aria-hidden="true"
+            className="absolute -left-6 top-1 h-3.5 w-3.5 rounded-full
+                       border-2 border-cream bg-terracotta"/&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</pre>
+        <p class="small">Verificado a 1000 y 1440 px: línea visible de 1 × 258 px, puntos alineados en x=407 y x=1032, centro del texto igual al del título (500 y 1125).</p>
+    </div>
+
+    <div class="block">
+        <h3><span class="num">2</span>El título se centra sobre el grupo visual</h3>
+        <p>Aunque el texto estaba centrado en su caja, el conjunto formado por eje + puntos + texto quedaba 12 px a la izquierda. Se corrió el título con <code>-translate-x-3</code>.</p>
+        <pre>&lt;p className="-translate-x-6 text-center font-sans
+              text-[11px] uppercase tracking-[0.4em] text-terracotta"&gt;
+    Programa del día
+&lt;/p&gt;</pre>
+        <p class="note">En el código final el valor quedó en <code>-translate-x-6</code> (24 px) para afinar el centro a 1440 px. Verificado: centro del título = centro del grupo visible (488 y 1113).</p>
+    </div>
+
+    <div class="block">
+        <h3><span class="num">3</span>Las fotos de fondo llenan su marco sin deformarse</h3>
+        <p>La banda entre Bienvenida e Historia y el contador volvieron a <code>bg-cover bg-center</code>. En Vestimenta se quitó el selector <code>[&amp;_img]:object-contain</code> para que la imagen usara <code>object-cover</code>.</p>
+        <pre>&lt;div className="absolute inset-0 bg-cover bg-center"
+     style={{ backgroundImage: `url('${featuredPhotos.banda}')` }}/&gt;</pre>
+        <p class="small"><strong>Aclaración importante:</strong> <code>cover</code> llena y <em>no deforma</em>, pero recorta el exceso. <code>contain</code> muestra la foto completa, pero deja franjas vacías. No se pueden tener las tres cosas a la vez sin cambiar la proporción del marco.</p>
+    </div>
+
+    <div class="block">
+        <h3><span class="num">4</span>Intento de mostrar la foto completa: sección 4:3</h3>
+        <p>Se probó <code>lg:aspect-[4/3]</code> en Vestimenta. Así, la mitad derecha medía exactamente 2:3 (720 × 1080 a 1440 px), igual que la imagen de 1024 × 1536, y se veía entera. Se descartó porque la sección pasaba de 512 a 1080 px de alto: «demasiado grande la imagen».</p>
+    </div>
+
+    <div class="block">
+        <h3><span class="num">5</span>Vuelta a la altura anterior</h3>
+        <p>Se restauró <code>lg:h-[32rem]</code> (512 px). Para que la onda no quedara vacía se puso detrás del panel crema la misma foto muy desenfocada (<code>blur-3xl</code>, <code>opacity-70</code>) con un velo <code>from-sand/60 via-terracotta/20 to-coffee/45</code>. Medido a 1440 px: sección y fondo 1440 × 512, radio de la onda <code>336px 60%</code>.</p>
+    </div>
+
+    <div class="block">
+        <h3><span class="num">6</span>Marco predefinido y degradado marino (descartado)</h3>
+        <p>Se probó un placeholder vertical <code>h-full aspect-[2/3]</code> con <code>Image fill</code> + <code>object-cover</code>, centrado en la mitad derecha (341 × 512 a 1440 px), y se sustituyó el fondo de la onda por un degradado otoñal marino <code>from-[#5c6b5d] via-[#8a6b4f] to-[#2e3d3a]</code>. El cliente lo rechazó («todo mal»).</p>
+    </div>
+
+    <div class="block">
+        <h3><span class="num">7</span>Estado final confirmado: foto de fondo + velo cálido</h3>
+        <p>Se retiraron el marco y el degradado marino. Vestimenta usa ahora la foto del vestido como <strong>fondo de toda la sección</strong>, con un velo que la integra con la paleta. La onda del panel crema revela esa misma imagen.</p>
+        <pre>&lt;div aria-hidden="true"
+     className="absolute inset-0 hidden bg-cover bg-center lg:block"
+     style={{ backgroundImage: `url('${featuredPhotos.dressCode}')` }}/&gt;
+
+&lt;div aria-hidden="true"
+     className="absolute inset-0 hidden
+                bg-linear-to-br from-sand/45 via-terracotta/25 to-coffee/50
+                lg:block"/&gt;</pre>
+        <p class="small">Verificado a 1440 px: fondo 1440 × 512 con la foto cargada, velo aplicado, sin desbordamiento ni errores de consola. En móvil Vestimenta no cambió: sigue usando <code>ArcoFoto</code> con <code>rounded-bl-[8rem_60%]</code>.</p>
+    </div>
+
+    <h3>Tabla resumen</h3>
+    <table>
+        <thead><tr><th>#</th><th>Cambio confirmado</th><th>Archivo principal</th><th>Resultado</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td>Línea y puntos del cronograma</td><td><code>ElGranDia.tsx</code></td><td>Visible y alineado</td></tr>
+            <tr><td>2</td><td>Título centrado sobre eje + texto</td><td><code>ElGranDia.tsx</code></td><td>Centro único a 1000 y 1440 px</td></tr>
+            <tr><td>3</td><td>Banda y contador con <code>bg-cover</code></td><td><code>page.tsx</code>, <code>CuentaRegresiva.tsx</code></td><td>Llenan el ancho sin deformar</td></tr>
+            <tr><td>4</td><td>Sección 4:3 para foto completa</td><td><code>CodigoVestimenta.tsx</code></td><td>Descartada: demasiado alta</td></tr>
+            <tr><td>5</td><td>Altura 512 px + foto desenfocada</td><td><code>CodigoVestimenta.tsx</code></td><td>Onda con textura</td></tr>
+            <tr><td>6</td><td>Marco 2:3 + degradado marino</td><td><code>CodigoVestimenta.tsx</code></td><td>Descartado por el cliente</td></tr>
+            <tr><td>7</td><td>Foto de fondo + velo cálido</td><td><code>CodigoVestimenta.tsx</code></td><td><strong>Estado actual</strong></td></tr>
+        </tbody>
+    </table>
+
+    <div class="card small">
+        <strong>Nota de honestidad sobre los datos.</strong> La bitácora registra seis hitos confirmados para el cronograma (5:00 ceremonia · 6:30 fotos · 8:00 recepción · 9:00 baile de los novios · 9:30 pastel · 10:00 baile general). Al leer <code>data/wedding-data.ts</code> para este PDF, el arreglo <code>schedule</code> contiene cuatro entradas (5:00 Ceremonia · 6:30 Recepción · 7:00 Cena · 8:30 Convivencia) y <code>description</code> es opcional. No he tocado ese archivo porque pediste solo la documentación; si quieres, lo igualamos a la versión confirmada.
+    </div>
+</section>
+
+<section class="page">
+    <h2>Parte 2 · Qué son realmente los «logos»</h2>
+    <p>Tu intuición estuvo cerca, pero conviene corregirla con precisión. No son imágenes pegadas, y tampoco son «solo CSS» en el sentido de bordes y pseudo-elementos. Son <strong>tres técnicas distintas</strong> conviviendo en la página:</p>
+    <ol>
+        <li><strong>SVG en línea</strong> (la mayoría): código SVG escrito dentro del componente de React.</li>
+        <li><strong>Texto con estilo</strong>: la X del modal de Historia.</li>
+        <li><strong>Imagen real PNG</strong>: solo la flecha del botón «Ver nuestra historia completa».</li>
+    </ol>
+
+    <h3>2.1 Cómo funciona un SVG en línea</h3>
+    <p>Un SVG es un <em>dibujo vectorial descrito con palabras</em>. Se define un lienzo con <code>viewBox="0 0 24 24"</code> y dentro se trazan formas: <code>&lt;rect&gt;</code> (rectángulo), <code>&lt;circle&gt;</code> (círculo) y <code>&lt;path&gt;</code> (una línea o curva cualquiera). El navegador lo pinta; no hay archivo que descargar.</p>
+    <pre>function IconoCalendario({ className }: IconoProps) {
+    return (
+        &lt;svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" strokeWidth={1.5}
+             className={className} aria-hidden="true"&gt;
+            &lt;rect x="3" y="5" width="18" height="16" rx="2"/&gt;
+            &lt;path d="M8 3v4M16 3v4M3 10h18" strokeLinecap="round"/&gt;
+        &lt;/svg&gt;
+    );
+}</pre>
+    <p>Las tres piezas clave son:</p>
+    <ul>
+        <li><code>viewBox="0 0 24 24"</code>: el lienzo. Todo se dibuja en coordenadas de 0 a 24; luego <code>className="h-5 w-5"</code> lo escala a 20 × 20 px.</li>
+        <li><code>stroke="currentColor"</code>: <strong>el trazo toma el color del texto</strong>. Si el contenedor tiene <code>text-cinnamon</code>, el calendario se vuelve canela automáticamente. Por eso no hay hex repetidos en los iconos.</li>
+        <li><code>aria-hidden="true"</code>: el icono es decorativo; el lector de pantalla solo anuncia el texto «Fecha», «Hora», etc., no el dibujo.</li>
+    </ul>
+
+    <h3>2.2 Inventario de todos los iconos</h3>
+    <table>
+        <thead><tr><th>Icono</th><th>Dónde está</th><th>Cómo está hecho</th></tr></thead>
+        <tbody>
+            <tr><td>Calendario</td><td>El Gran Día, dato «Fecha»</td><td>SVG: un <code>&lt;rect&gt;</code> + un <code>&lt;path&gt;</code> con las tres rayas.</td></tr>
+            <tr><td>Reloj</td><td>El Gran Día, dato «Hora»</td><td>SVG: un <code>&lt;circle&gt;</code> + <code>d="M12 7v5l3 2"</code> (agujas).</td></tr>
+            <tr><td>Pin de ubicación</td><td>El Gran Día, dato «Dirección»</td><td>SVG: una gota con <code>&lt;path&gt;</code> y un <code>&lt;circle&gt;</code> interior.</td></tr>
+            <tr><td>Flecha diagonal</td><td>Botón «Cómo llegar»</td><td>SVG: <code>d="M7 17L17 7M17 7H9M17 7v8"</code>.</td></tr>
+            <tr><td>Puntos y línea del programa</td><td>Cronograma de El Gran Día</td><td><strong>CSS puro</strong>: <code>span</code> con <code>w-px bg-sand/70</code> y puntos con <code>rounded-full border-2 border-cream bg-terracotta</code>.</td></tr>
+            <tr><td>Hamburguesa / X del menú</td><td>Header en móvil</td><td>Un solo SVG cuyo <code>&lt;path&gt;</code> cambia con el estado de React: tres rayas o dos diagonales.</td></tr>
+            <tr><td>Chevron <code>&gt;</code></td><td>Botón circular de Galería</td><td>SVG: <code>d="M9 5l7 7-7 7"</code>. No es el carácter <code>&gt;</code> ni una imagen.</td></tr>
+            <tr><td>Ramas con hojas</td><td>Bienvenida, Historia y Vestimenta</td><td>SVG de 400 × 400 con 6 tallos y 10 hojas repetidas con <code>transform</code>. Se voltea con <code>rotate-180</code>.</td></tr>
+            <tr><td>Sobre y teléfono</td><td>Footer, contacto del desarrollador</td><td>SVG: rectángulo + solapa el sobre; un <code>&lt;path&gt;</code> largo el teléfono.</td></tr>
+            <tr><td>X de cierre del modal</td><td>Modal de Historia</td><td><strong>Texto</strong>: la entidad HTML <code>&amp;times;</code> (×), con <code>text-2xl text-terracotta</code>.</td></tr>
+            <tr><td>Flecha del botón de Historia</td><td>Modal de Historia</td><td><strong>PNG real</strong>: <code>/icons/derecha.png</code> cargado con <code>next/image</code>.</td></tr>
+            <tr><td>Monograma «S &amp; D»</td><td>Header</td><td><strong>Texto</strong> con <code>font-serif</code> (Cormorant Garamond).</td></tr>
+            <tr><td>Punto separador</td><td>Footer</td><td>CSS: <code>h-1 w-1 rounded-full bg-sand/50</code>.</td></tr>
+        </tbody>
+    </table>
+
+    <h3>2.3 Casos concretos que te generaron duda</h3>
+    <div class="block">
+        <h4>La X del modal</h4>
+        <pre>&lt;button aria-label="Cerrar la historia"
+    className="... font-sans text-2xl leading-none
+               text-terracotta ..."&gt;
+    &amp;times;
+&lt;/button&gt;</pre>
+        <p>Es el signo × que escribe el teclado, contenido en un botón accesible con <code>aria-label</code>. La fuente lo dibuja; no hay SVG ni PNG. Si cambias <code>text-terracotta</code> por <code>text-coffee</code>, la X cambia de color igual que un SVG con <code>currentColor</code>.</p>
+    </div>
+    <div class="block">
+        <h4>El <code>&gt;</code> de Galería</h4>
+        <pre>&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"
+     className="h-5 w-5" aria-hidden="true"&gt;
+    &lt;path d="M9 5l7 7-7 7"/&gt;
+&lt;/svg&gt;</pre>
+        <p>Es una «chevron» dibujada con dos segmentos. El botón que la contiene es el que gira al pasar el ratón via <code>hover:bg-terracotta</code>. El acceso con flechas del teclado está en <code>Lightbox.tsx</code>, no en este icono.</p>
+    </div>
+    <div class="block">
+        <h4>El calendario</h4>
+        <p>Se compone de un rectángulo con esquinas redondeadas (<code>rx="2"</code>) y una línea horizontal que separa la cabecera, más dos pequeños tramos verticales que simulan las anillas. Todo con el mismo grosor de trazo (<code>strokeWidth={1.5}</code>) para que combine con el reloj y el pin, que usan el mismo valor.</p>
+    </div>
+
+    <h3>2.4 Las ramas: el «logo» más elaborado</h3>
+    <p><code>components/ui/Ramas.tsx</code> es un único SVG reutilizable. La mitad superior del archivo dibuja seis tallos con curvas Bézier (<code>C</code> en el atributo <code>d</code>); la inferior repite una misma forma de hoja diez veces con <code>translate</code>, <code>rotate</code> y <code>scale</code>. El color se hereda con <code>currentColor</code>, así que cada sección decide el tono:</p>
+    <pre>&lt;Ramas className="absolute right-0 top-6 hidden
+                      h-64 w-64 text-sand/25 lg:block"/&gt;
+&lt;Ramas volteada className="absolute bottom-0 left-0 hidden
+                            h-40 w-40 text-sand/20 lg:block"/&gt;</pre>
+    <p>La prop <code>volteada</code> añade <code>rotate-180</code> al SVG, de modo que la misma rama abraza el texto desde la esquina opuesta sin dibujar un segundo icono.</p>
+</section>
+
+<section class="page">
+    <h2>Parte 3 · Ventajas, límites y cómo poner imágenes reales</h2>
+
+    <h3>3.1 Por qué se hizo así</h3>
+    <table>
+        <thead><tr><th>Ventaja</th><th>Qué significa en este proyecto</th></tr></thead>
+        <tbody>
+            <tr><td>Color heredado</td><td><code>currentColor</code> toma <code>text-terracotta</code>, <code>text-cinnamon</code> o <code>text-sand/25</code> según la sección. No se repiten hexadecimales.</td></tr>
+            <tr><td>Tamaño con clases</td><td><code>h-5 w-5</code>, <code>h-64 w-64</code>: se cambia el tamaño sin editar el dibujo.</td></tr>
+            <tr><td>Nitidez</td><td>Al ser vectorial, no se pixelan al ampliar ni en pantallas de alta densidad.</td></tr>
+            <tr><td>Sin archivos nuevos</td><td>No hay que descargar, optimizar ni cachear decenas de PNG.</td></tr>
+            <tr><td>Accesibilidad</td><td><code>aria-hidden="true"</code> evita que el lector de pantalla lea trazos sin sentido.</td></tr>
+            <tr><td>Estado</td><td>El botón del Header cambia de rayas a X solo cambiando una condición en React.</td></tr>
+        </tbody>
+    </table>
+    <p class="note"><strong>Límite:</strong> para cambiar la <em>forma</em> (por ejemplo, convertir el pin en una estrella) hay que editar las coordenadas del <code>&lt;path&gt;</code>. Con una imagen bastaría con sustituir el archivo.</p>
+
+    <h3>3.2 Si quieres imágenes reales, así se hace</h3>
+    <p>No hace falta rediseñar la sección. Se guarda el archivo en <code>public/icons/</code> y se sustituye el SVG por <code>next/image</code> manteniendo el mismo contenedor y las mismas clases de tamaño:</p>
+    <pre>// Antes (SVG en línea)
+&lt;svg viewBox="0 0 24 24" ... className="h-5 w-5"&gt;
+    &lt;path d="..."/&gt;
+&lt;/svg&gt;
+
+// Después (imagen real)
+&lt;Image src="/icons/calendario.png"
+       alt="" width={20} height={20}
+       className="h-5 w-5 object-contain"/&gt;</pre>
+    <p>Recomendaciones: usa PNG o WebP con fondo transparente; exporta a 2× el tamaño visible (40 × 40 px para un icono de 20 px) para que se vea nítido; deja <code>alt=""</code> si es decorativo y el texto de al lado ya lo describe; y mantén <code>aria-hidden</code> en el envoltorio si lo tienes. Si el icono es <strong>el único contenido de un botón</strong>, entonces sí necesita <code>aria-label</code> en el botón, como ya ocurre con «Ver más fotos» y «Cerrar la historia».</p>
+
+    <h3>3.3 Los dos PNG que ya existen</h3>
+    <table>
+        <thead><tr><th>Archivo</th><th>Se usa en</th><th>Estado</th></tr></thead>
+        <tbody>
+            <tr><td><code>public/icons/derecha.png</code></td><td>Flecha del botón que abre el modal de Historia</td><td class="yes">En uso</td></tr>
+            <tr><td><code>public/icons/anadir.png</code></td><td>Antes era el «+» del acordeón de preguntas frecuentes</td><td class="no">En desuso: FAQ se eliminó del sitio</td></tr>
+        </tbody>
+    </table>
+    <p class="small">Esto responde directamente a tu duda: hubo imágenes reales, pero solo para esos dos detalles. El calendario, el reloj, el pin, la X de cierre, el <code>&gt;</code> de galería, la hamburguesa, el sobre, el teléfono y las ramas son código, no archivos.</p>
+
+    <h3>3.4 Cómo comprobarlo tú mismo</h3>
+    <ol>
+        <li>Abre las herramientas de desarrollador y selecciona el icono con el inspector.</li>
+        <li>Si ves una etiqueta <code>&lt;svg&gt;</code> con <code>&lt;path&gt;</code>, es dibujo vectorial en código.</li>
+        <li>Si ves <code>&lt;img src="/icons/..."&gt;</code>, es una imagen real.</li>
+        <li>Si solo ves texto (<code>&times;</code> o <code>S &amp; D</code>), es un carácter con estilos.</li>
+    </ol>
+    <p>Otra prueba rápida: cambia <code>text-terracotta</code> por <code>text-coffee</code> en el contenedor. Los SVG con <code>currentColor</code> y el texto cambian al instante; un PNG no cambiaría de color.</p>
+</section>
+
+<section class="page">
+    <h2>Apéndice · Inventario y comprobaciones</h2>
+
+    <h3>Archivos que contienen iconos</h3>
+    <table>
+        <thead><tr><th>Archivo</th><th>Qué contiene</th></tr></thead>
+        <tbody>
+            <tr><td><code>components/sections/ElGranDia.tsx</code></td><td>Calendario, reloj, pin, flecha del botón, puntos y eje del cronograma.</td></tr>
+            <tr><td><code>components/layout/Header.tsx</code></td><td>Hamburguesa/X del menú móvil y monograma de texto.</td></tr>
+            <tr><td><code>components/layout/Footer.tsx</code></td><td>Sobre, teléfono y punto separador.</td></tr>
+            <tr><td><code>components/sections/Galeria.tsx</code></td><td>Chevron del botón circular.</td></tr>
+            <tr><td><code>components/ui/HistoriaModal.tsx</code></td><td>X de texto y flecha PNG.</td></tr>
+            <tr><td><code>components/ui/Ramas.tsx</code></td><td>Ramas vectoriales reutilizables.</td></tr>
+            <tr><td><code>components/ui/Lightbox.tsx</code></td><td>Navegación con flechas del teclado (sin iconos dibujados).</td></tr>
+            <tr><td><code>public/icons/</code></td><td><code>derecha.png</code> en uso y <code>anadir.png</code> en desuso.</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Comprobaciones ejecutadas en esta ronda</h3>
+    <ul>
+        <li><code>npx tsc --noEmit</code> — sin errores de tipos.</li>
+        <li><code>npm run lint</code> — sin avisos de ESLint.</li>
+        <li>Revisión DOM a 1000, 1024 y 1440 px — sin scroll horizontal.</li>
+        <li>Consola del navegador — sin errores.</li>
+    </ul>
+
+    <div class="card">
+        <p><strong>Conclusión.</strong> Tenías razón en que «algo con estilos» estaba pasando, pero el matiz es importante: los iconos son <strong>SVG dibujados en el código</strong> y estilizados con Tailwind; <code>currentColor</code> es el puente entre el CSS y el dibujo. Solo la X del modal es texto y solo la flecha de Historia es una imagen pegada. Si quieres convertir cualquiera en PNG, el contenedor ya está preparado: basta con cambiar el contenido, no la sección.</p>
+    </div>
+
+    <p class="center small" style="margin-top:18mm; color:#A66443;">
+        Documento generado el 18 de noviembre de 2026 · Sin cambios en el código de la aplicación durante esta entrega.
+    </p>
+</section>
+
+</main>
+</body>
+</html>

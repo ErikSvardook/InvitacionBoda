@@ -17,8 +17,8 @@ export default function Hero() {
                 {/*Oscurece la izquieda para que el texto tenga contraste*/}
                 <div className="absolute inset-0 bg-linear-to-r from-ink/85 via-ink/45 to-ink/10"/>
 
-                {/*Oscurece la parte inferior, donde vive el texto*/}
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-ink/90 via-ink/25 to-transparent"/>
+                {/*Oscurece la parte inferior: termina en el mismo gris de Bienvenida para que no haya costura*/}
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-gris via-ink/25 to-transparent"/>
 
                 {/*El Header se lee sobre la foto*/}
                 <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-ink/50 to-transparent"/>

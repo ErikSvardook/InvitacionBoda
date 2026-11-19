@@ -78,8 +78,9 @@
 </div>
 
 <div class="exito evitar">
-  <strong>Estado:</strong> los tres cambios pedidos en esta ronda ya están aplicados y verificados. Este PDF los documenta y,<br>
-  como pediste, <strong>no aplica</strong> el código de la sección final: ese código es solo una propuesta para que lo pegues tú si decides cambiar el efecto.
+  <strong>Estado:</strong> los tres cambios pedidos en esta ronda ya están aplicados y verificados, incluido el efecto de
+  <strong>continuidad solo con color</strong> en Bienvenida. Este PDF documenta el estado final del sitio; el apartado 14
+  explica el código ya pegado y el apéndice responde la pregunta sobre fondos con ramas y rosas (no aplicado).
 </div>
 
 <div class="enfasis evitar">
@@ -113,8 +114,9 @@
   <tr><td>11</td><td>De dónde sale la imagen de fondo</td></tr>
   <tr><td>12</td><td>Qué pasa si quitas la imagen</td></tr>
   <tr><td>13</td><td>El color, la línea y la continuidad</td></tr>
-  <tr><td>14</td><td>Código para lograr continuidad solo con color</td></tr>
+  <tr><td>14</td><td>Continuidad solo con color: código ya aplicado</td></tr>
   <tr><td>15</td><td>Comprobación final</td></tr>
+  <tr><td>16</td><td>Apéndice: fondos con ramas, hojas o rosas (no aplicado)</td></tr>
 </table>
 
 <div class="nota">
@@ -159,29 +161,31 @@ tiene texto y no interviene en la navegación:</p>
 <pre><code>&lt;Hero/&gt;
 &lt;Bienvenida/&gt;
 {/* Franja divisoria de color, sin texto */}
-&lt;div aria-hidden="true" className="h-1 bg-terracotta"/&gt;
+&lt;div aria-hidden="true" className="h-3 bg-terracotta"/&gt;
 &lt;NuestraHistoria/&gt;</code></pre>
 
 <ul>
-  <li><code>h-1</code> → 4 px de alto. Es una línea/rectángulo, no una sección con contenido.</li>
+  <li><code>h-3</code> → 12 px de alto. Es una línea/rectángulo, no una sección con contenido.</li>
   <li><code>bg-terracotta</code> → usa el token de la paleta (<code>#b4653a</code>). No se escribió un hex a mano.</li>
   <li><code>aria-hidden="true"</code> → el lector de pantalla lo ignora porque no aporta información.</li>
 </ul>
 
-<p>Verificado en el navegador: el elemento está entre <code>#bienvenida</code> y <code>#historia</code>, mide <strong>4 px</strong>
+<p>Verificado en el navegador: el elemento está entre <code>#bienvenida</code> y <code>#historia</code>, mide <strong>12 px</strong>
 y su color computado es <code>rgb(180, 101, 58)</code>, que es exactamente el token terracota. Si quieres cambiar el tono,
 cambia solo <code>bg-terracotta</code> por <code>bg-sand</code> (más suave) o <code>bg-coffee</code> (más fuerte); si quieres
-más grosor, cambia <code>h-1</code> por <code>h-1.5</code> o <code>h-2</code>.</p>
+otro grosor, cambia <code>h-3</code> por <code>h-2</code> (8 px) o <code>h-4</code> (16 px).</p>
 
 <h3>3. El Gran Día: correr el contenido y centrar el cronograma</h3>
 
 <p><span class="ruta">components/sections/ElGranDia.tsx</span>. Dos ajustes mínimos en la misma sección.</p>
 
 <h4>3.1 Correr el contenido un poco a la derecha</h4>
-<p>En el contenedor de las tres columnas se añadió <code>lg:translate-x-6</code>:</p>
+<p>En el contenedor de las tres columnas se añadió <code>xl:translate-x-6</code>. Se usa <code>xl</code> (1280 px en adelante)
+y no <code>lg</code> porque a 1024 px el grid ocupa todo el ancho disponible: con <code>lg</code>, los 24 px de traslación
+provocaban scroll horizontal. Medido en el navegador, el desbordamiento desapareció:</p>
 
 <pre><code>className="mx-auto grid max-w-6xl gap-12 px-6
-           lg:grid-cols-12 lg:items-center lg:gap-10 <strong>lg:translate-x-6</strong>"</code></pre>
+           lg:grid-cols-12 lg:items-center lg:gap-10 <strong>xl:translate-x-6</strong>"</code></pre>
 
 <p>Es una traslación visual de 24 px (6 × 4 px) que no recalcula anchos ni rompe el grid. Medido a 1440 px:</p>
 
@@ -206,9 +210,19 @@ cambios complementarios:</p>
 {/* Cada hora: misma separación a izquierda y derecha */}
 &lt;li key={item.time} className="relative <strong>px-9</strong>"&gt;</code></pre>
 
-<p>Al cambiar <code>pl-9</code> por <code>px-9</code>, el texto de la lista pasó de 256 px a 184 px de ancho, pero quedó
-centrado: el centro del título y el centro del texto son ahora <strong>x = 1118</strong> en los dos casos. La línea y los
-puntos siguen en el mismo sitio porque están en <code>left-0</code> dentro de cada <code>li</code>.</p>
+<p>Al cambiar <code>pl-9</code> por <code>px-9</code>, el texto de la lista pasó de 256 px a 184 px de ancho y quedó centrado
+dentro de su caja. La línea y los puntos siguen en <code>left-0</code>, así que el bloque completo (punto + texto) quedaba
+18 px a la izquierda del centro del título. Se corrigió con una traslación del contenedor de la línea:</p>
+
+<pre><code>&lt;div className="relative mt-6 <strong>lg:translate-x-[18px]</strong>"&gt;
+  &lt;span aria-hidden="true" className="absolute inset-y-2 left-[7px] w-px bg-sand/70"/&gt;
+  ...
+&lt;/div&gt;</code></pre>
+
+<p>Resultado a 1440 px: el título está centrado en <strong>x = 1118</strong> y el bloque visible del cronograma
+(punto + texto, de x=1008 a x=1228) también está centrado en <strong>x = 1118</strong>, con 18 px de margen a cada lado
+dentro de la caja de 256 px del título. El texto queda 18 px a la derecha del centro porque el punto ocupa el lado
+izquierdo: eso es justo lo que hace que el conjunto se lea centrado.</p>
 
 <div class="nota">
   <strong>Por qué <code>px-9</code> y no mover la línea:</strong> el punto y el hilo del cronograma son la "sangría visual" de
@@ -404,58 +418,45 @@ tono con el que termina el Hero y si el arco sigue tapando la parte izquierda. P
 el Hero termine en una franja corta del mismo color sólido.</p>
 
 <div class="page-break"></div>
-<h3>14. Código para lograr continuidad solo con color <span class="small">(NO aplicado)</span></h3>
+<h3>14. Continuidad solo con color: código ya aplicado</h3>
 
-<div class="aviso evitar">
-  <strong>Esto es una propuesta.</strong> No lo pegué en el proyecto. Si lo aplicas, la fotografía del lado derecho de
-  Bienvenida desaparece y queda un bloque de color liso. Guarda antes una copia de <code>Bienvenida.tsx</code>.
+<div class="exito evitar">
+  <strong>Ya está en el sitio.</strong> Se quitó la fotografía del lado derecho de Bienvenida y se sustituyó por una capa
+  opaca de tinta. El Hero termina en el mismo tono para que el empalme no se vea. Esto es lo que hay hoy en los archivos.
 </div>
 
-<p><strong>A. Reemplazar la capa de la imagen por una capa de color</strong> — en
-<span class="ruta">components/sections/Bienvenida.tsx</span>, cambia el bloque completo de la capa del Hero (líneas 23–40) por:</p>
+<p><strong>A. Capa de color en Bienvenida</strong> — <span class="ruta">components/sections/Bienvenida.tsx</span>:</p>
 
 <pre><code>{/*
-  Capa continua de COLOR, sin fotografía.
-  Sigue naciendo en el centro y el arco sigue tapando su parte baja,
-  así que la cuña curva se rellena con el mismo tono que el bloque derecho.
+  Continuidad de COLOR, sin fotografía: una capa opaca de tinta nace en el centro
+  de la sección y llega al borde derecho. El arco tapa su parte baja, así que la
+  cuña curva se rellena con el mismo tono del Hero que termina justo arriba.
 */}
-&lt;div aria-hidden="true"
-     className="absolute inset-y-0 left-1/2 right-0 hidden lg:block bg-ink"&gt;
-
-  {/*Degradado muy suave: apenas cambia el tono de izquierda a derecha*/}
+&lt;div aria-hidden="true" className="absolute inset-y-0 left-1/2 right-0 hidden bg-ink lg:block"&gt;
+  {/*Degradado muy tenue: solo da un poco de profundidad hacia el borde derecho*/}
   &lt;div className="absolute inset-0 bg-linear-to-r from-ink via-ink/95 to-ink/90"/&gt;
-
-  {/*Misma idea de profundidad que el Hero, sin foto debajo*/}
-  &lt;div className="absolute inset-x-0 bottom-0 h-1/3
-                  bg-linear-to-t from-ink/80 to-transparent"/&gt;
 &lt;/div&gt;</code></pre>
 
-<p><strong>B. Ajustar el final del Hero para que el empalme no se note</strong> — en
-<span class="ruta">components/sections/Hero.tsx</span>, añade una franja opaca justo al final del bloque de velos:</p>
+<p><strong>B. Final del Hero</strong> — en <span class="ruta">components/sections/Hero.tsx</span> el velo inferior cambió
+de <code>from-ink/90</code> a <code>from-ink</code>, para que la tinta sea completa justo donde empieza Bienvenida:</p>
 
-<pre><code>{/*Franja de tinta pura: el color con el que continúa Bienvenida*/}
-&lt;div className="absolute inset-x-0 bottom-0 h-8 bg-ink"/&gt;</code></pre>
+<pre><code>&lt;div className="absolute inset-x-0 bottom-0 h-2/3
+                bg-linear-to-t <strong>from-ink</strong> via-ink/25 to-transparent"/&gt;</code></pre>
 
-<p><strong>C. Limpiar imports</strong> — al quitar el <code>&lt;Image&gt;</code> de Bienvenida, ese archivo ya no usa
-<code>next/image</code>. Quita esta línea:</p>
-
-<pre><code>- import Image from "next/image";</code></pre>
-
-<p>Mantén <code>featuredPhotos</code> en el import de datos: sigue sirviendo para la foto del arco
-(<code>featuredPhotos.welcome</code>). El componente <code>FechaVertical</code> no necesita cambios: sus clases
-<code>lg:text-cream</code> siguen siendo correctas sobre <code>bg-ink</code>.</p>
+<p><strong>C. Limpieza</strong> — se quitó <code>import Image from "next/image";</code> de Bienvenida. Se mantuvo
+<code>featuredPhotos</code> porque sigue sirviendo para la foto del arco (<code>featuredPhotos.welcome</code>).
+<code>FechaVertical</code> no necesitó cambios: sus clases <code>lg:text-cream</code> siguen siendo correctas sobre tinta.</p>
 
 <div class="nota">
   <strong>Variante más cálida:</strong> si <code>#1e1611</code> se ve demasiado oscuro, cambia <code>bg-ink</code> por
-  <code>bg-coffee</code> en la capa A y usa <code>from-coffee</code> en la franja B. Los dos lados deben usar el mismo token
-  para que no aparezca la costura que estamos evitando.
+  <code>bg-coffee</code> en la capa A y <code>from-ink</code> por <code>from-coffee</code> en el velo B. Los dos lados
+  deben usar el mismo token para que no aparezca la costura que estamos evitando.
 </div>
 
 <p class="pregunta">15. ¿Sí explicaste bien lo que quieres lograr?</p>
-<p class="respuesta">Sí. Quieres que el lado derecho de Bienvenida se lea como una <strong>continuación de color del Hero</strong>,
-sin que se vea una fotografía de fondo en esa franja, y sin la línea divisoria (que ya está quitada). Es decir: mismo tono
-oscuro, la cuña curva rellena con ese tono, la fecha encima y el arco tapando el resto. El código de la sección 14 es
-exactamente eso, y sigue sin estar aplicado.</p>
+<p class="respuesta">Sí. Querías que el lado derecho de Bienvenida se leyera como <strong>continuación de color del Hero</strong>,
+sin fotografía de fondo y sin línea divisoria. Es el estado actual: mismo tono, cuña curva rellena, fecha encima y arco
+tapando el resto.</p>
 
 <div class="page-break"></div>
 <h2>15. Comprobación final de los cambios aplicados</h2>
@@ -463,18 +464,47 @@ exactamente eso, y sigue sin estar aplicado.</p>
 <table>
   <tr><th>Comprobación</th><th>Resultado</th></tr>
   <tr><td>Separación texto ↔ arco en Bienvenida</td><td>36 px (antes 12 px)</td></tr>
-  <tr><td>Franja entre bienvenida y historia</td><td>4 px, <code>rgb(180, 101, 58)</code>, sin texto</td></tr>
-  <tr><td>Desplazamiento del contenido de El Gran Día</td><td>24 px a la derecha</td></tr>
+  <tr><td>Franja entre bienvenida y historia</td><td>12 px, <code>rgb(180, 101, 58)</code>, sin texto</td></tr>
+  <tr><td>Desplazamiento del contenido de El Gran Día</td><td>24 px a la derecha solo desde 1280 px (sin overflow a 1024)</td></tr>
   <tr><td>Centro del título del cronograma</td><td>x = 1118</td></tr>
-  <tr><td>Centro del texto del cronograma</td><td>x = 1118 (alineado)</td></tr>
+  <tr><td>Centro del bloque visible del cronograma</td><td>x = 1118 (alineado)</td></tr>
+  <tr><td>Capa derecha de Bienvenida</td><td>sin imágenes, <code>rgb(30, 22, 17)</code></td></tr>
   <tr><td>Onda de Historia a 1440 px</td><td>y 1578 → x 1000, radio 288 × 288</td></tr>
   <tr><td>Versión móvil de Historia</td><td><code>rounded-t-full</code>, sin cambios</td></tr>
   <tr><td>Scroll horizontal</td><td>no</td></tr>
   <tr><td><code>npx tsc --noEmit</code></td><td>limpio</td></tr>
   <tr><td><code>npm run lint</code></td><td>limpio</td></tr>
   <tr><td>Consola del navegador (carga limpia)</td><td>sin errores</td></tr>
-  <tr><td>Código de la sección 14</td><td><strong>solo en este PDF, no aplicado</strong></td></tr>
+  <tr><td>Código de la sección 14</td><td><strong>ya aplicado en el sitio</strong></td></tr>
 </table>
+
+<div class="page-break"></div>
+<h2>Apéndice — ¿Fondo con ramas, hojas o rosas en los bloques de texto?</h2>
+
+<p><strong>Sí es posible</strong> sin tocar la estructura, pero hay dos caminos distintos y conviene elegir antes de implementar.</p>
+
+<h3>A. SVG o CSS (sin archivos de imagen)</h3>
+<ul>
+  <li>Ramas y hojas dibujadas con unas pocas rutas <code>&lt;svg&gt;</code> o con formas CSS, en terracota/arena al 8–15 % de opacidad.</li>
+  <li>Se animan con <code>@keyframes</code> (desplazamiento y giro muy lentos, 20–40 s) y se respeta <code>prefers-reduced-motion</code>.</li>
+  <li>Ventajas: pesa casi nada, no necesita archivos nuevos y escala a cualquier pantalla.</li>
+  <li>Inconveniente: se ve ilustrado/lineal, no fotográfico. Las rosas realistas así no se logran.</li>
+</ul>
+
+<h3>B. Imágenes (PNG/WebP con transparencia)</h3>
+<ul>
+  <li>Rosas o ramas en acuarela, recortadas con fondo transparente, ubicadas en las esquinas del bloque de texto.</li>
+  <li>Se colocan con <code>absolute</code> + <code>pointer-events-none</code> + opacidad baja, dentro de un contenedor
+      <code>relative overflow-hidden</code>; el texto va en una capa superior.</li>
+  <li>La animación sigue siendo CSS (movimiento sutil sobre la imagen), pero el archivo de imagen es obligatorio.</li>
+  <li>Hay que generar o conseguir esas imágenes y optimizarlas para no cargar demasiado la página.</li>
+</ul>
+
+<div class="nota">
+  <strong>Recomendación para esta invitación:</strong> la opción A en tonos arena/terracota con movimiento casi imperceptible
+  encaja mejor con el estilo editorial actual y no añade peso. Si quieres rosas con aspecto real, hay que ir por la B.
+  <strong>No está aplicado</strong>: dime qué opción prefieres y en cuáles de los tres bloques la quieres.
+</div>
 
 <footer>
   Documento: <code>docs/ajustes-finales-y-efecto-onda.html</code> · Generado desde el estado del 18 de noviembre de 2026.<br>

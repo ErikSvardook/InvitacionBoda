@@ -14,6 +14,22 @@
   --color-cinnamon: #8f4a2b;
   --color-coffee: #4a2e20;
   --color-ink: #1e1611;
+  /*Gris cálido tenue para el continuo de color a la derecha de Bienvenida*/
+  --color-gris: #4a4540;
+}
+
+/*
+  Altura compartida por la banda divisoria y la sección del contador.
+  Se mide en rem para que ambas crezcan juntas al estrechar la ventana.
+*/
+:root {
+  --altura-banda: 23rem;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --altura-banda: 16.5rem;
+  }
 }
 
 /*
